@@ -15,6 +15,10 @@ func (t StatusEnabledType) Int64() int64 {
 	return int64(t)
 }
 
+func (t StatusEnabledType) Int8() int8 {
+	return int8(t)
+}
+
 func (t StatusEnabledType) Default() StatusEnabledType {
 	if !(t == StatusEnabled || t == StatusDisabled) {
 		return StatusEnabled

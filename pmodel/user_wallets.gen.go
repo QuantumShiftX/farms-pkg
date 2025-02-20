@@ -10,12 +10,15 @@ const TableNameUserWallet = "user_wallets"
 
 // UserWallet mapped from table <user_wallets>
 type UserWallet struct {
-	ID            int64 `gorm:"column:id;primaryKey;autoIncrement:true;comment:主键ID" json:"id"`                                // 主键ID
-	WalletType    int8 `gorm:"column:wallet_type;not null;comment:钱包类型：1-用户钱包，2-代理钱包，3-奖励钱包，4-USDT钱包" json:"wallet_type"`     // 钱包类型：1-用户钱包，2-代理钱包，3-奖励钱包，4-USDT钱包
-	UserID        int64 `gorm:"column:user_id;not null;index:idx_user_wallets_user_id,priority:1;comment:用户ID" json:"user_id"` // 用户ID
-	Balance       int64 `gorm:"column:balance;not null;comment:可用余额" json:"balance"`                                           // 可用余额
-	LockedBalance int64 `gorm:"column:locked_balance;not null;comment:锁定余额" json:"locked_balance"`                             // 锁定余额
-	Status        int8 `gorm:"column:status;not null;default:1;comment:状态：1-启用，2-禁用" json:"status"`                           // 状态：1-启用，2-禁用
+	ID                  int64  `gorm:"column:id;primaryKey;autoIncrement:true;comment:主键" json:"id"`                                                                                                                                                                                                                                        // 主键
+	UserID              int64  `gorm:"column:user_id;not null;uniqueIndex:uq_user_default_withdrawal_wallet,priority:1;uniqueIndex:uq_user_default_deposit_wallet,priority:1;index:idx_user_wallets_withdrawal,priority:3;index:idx_user_wallets_deposit,priority:3;index:idx_user_wallets_user_id,priority:1;comment:用户ID" json:"user_id"` // 用户ID
+	WalletAddress       string `gorm:"column:wallet_address;not null;index:idx_user_wallets_address,priority:1;comment:钱包地址" json:"wallet_address"`                                                                                                                                                                                         // 钱包地址
+	WalletName          string `gorm:"column:wallet_name;not null;comment:钱包名称/备注" json:"wallet_name"`                                                                                                                                                                                                                                      // 钱包名称/备注
+	WalletType          string `gorm:"column:wallet_type;not null;default:ETH;comment:钱包类型(ETH/BTC等)" json:"wallet_type"`                                                                                                                                                                                                                   // 钱包类型(ETH/BTC等)
+	UsageType           int8  `gorm:"column:usage_type;not null;index:idx_user_wallets_withdrawal,priority:2;index:idx_user_wallets_deposit,priority:2;comment:用途类型: 1-仅存款; 2-仅提款; 3-存款和提款" json:"usage_type"`                                                                                                                             // 用途类型: 1-仅存款; 2-仅提款; 3-存款和提款
+	IsDefaultDeposit    int8  `gorm:"column:is_default_deposit;not null;index:idx_user_wallets_deposit,priority:1;default:1;comment:是否默认存款地址: 1-否; 2-是" json:"is_default_deposit"`                                                                                                                                                         // 是否默认存款地址: 1-否; 2-是
+	IsDefaultWithdrawal int8  `gorm:"column:is_default_withdrawal;not null;index:idx_user_wallets_withdrawal,priority:1;default:1;comment:是否默认提款地址: 1-否; 2-是" json:"is_default_withdrawal"`                                                                                                                                                // 是否默认提款地址: 1-否; 2-是
+	Status              int8  `gorm:"column:status;not null;default:1;comment:状态: 1-正常; 2-禁用" json:"status"`                                                                                                                                                                                                                              // 状态: 1-正常; 2-禁用
 	//
 	gormx.Model
 }

@@ -11,6 +11,7 @@ const TableNameUserFarm = "user_farms"
 // UserFarm mapped from table <user_farms>
 type UserFarm struct {
 	ID                    int64  `gorm:"column:id;primaryKey;autoIncrement:true;comment:主键ID" json:"id"`                                                  // 主键ID
+	FarmID                int64  `gorm:"column:farm_id;not null;index:idx_user_farms_user_id,priority:1;comment:农场ID" json:"farm_id"`
 	UserID                int64  `gorm:"column:user_id;not null;index:idx_user_farms_user_id,priority:1;comment:用户ID" json:"user_id"`                     // 用户ID
 	FarmName              string `gorm:"column:farm_name;not null;comment:农场名称" json:"farm_name"`                                                         // 农场名称
 	TotalLandCount        int64  `gorm:"column:total_land_count;not null;default:20;comment:农场总土地数量" json:"total_land_count"`                             // 农场总土地数量

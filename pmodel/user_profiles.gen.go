@@ -16,7 +16,6 @@ type UserProfile struct {
 	ID             int64     `gorm:"column:id;primaryKey;autoIncrement:true;comment:主键" json:"id"`                                   // 主键
 	UserID         int64     `gorm:"column:user_id;not null;index:idx_user_profiles_user_id,priority:1;comment:用户id" json:"user_id"` // 用户id
 	InvitationCode string    `gorm:"column:invitation_code;not null;comment:用户的邀请码" json:"invitation_code"`                          // 用户的邀请码
-	WalletAddress  string    `gorm:"column:wallet_address;not null;comment:用户的钱包地址" json:"wallet_address"`                           // 用户的钱包地址
 	Realname       string    `gorm:"column:realname;not null;comment:真实姓名" json:"realname"`                                          // 真实姓名
 	Nickname       string    `gorm:"column:nickname;not null;comment:昵称" json:"nickname"`                                            // 昵称
 	Avatar         string    `gorm:"column:avatar;not null;comment:头像" json:"avatar"`                                                // 头像

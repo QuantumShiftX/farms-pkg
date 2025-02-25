@@ -9,3 +9,10 @@ const (
 	CacheVipLevelConfKey = "{cache}:vip_level_rule:%d" // {cache}:vip_level_rule:{id}
 
 )
+
+const (
+	// CacheOnlineUsersKey 在线用户key
+	CacheOnlineUsersKey    = "{cache}:online:users" // {cache}:online:users
+	CacheUserOnlineInfoKey = "{cache}:user:online:" // {cache}:user:online:{user_id}
+
+)

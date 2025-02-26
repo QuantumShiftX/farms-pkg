@@ -15,4 +15,6 @@ const (
 
 	CacheSettingRebateKey = "{cache}:system_rebate:%s:%s" // {cache}:system_setting:{category}{key}
 
+	CacheSettingAgreementKey = "{cache}:system_agreement:%s" // {cache}:system_setting:{category}
+
 )

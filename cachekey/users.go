@@ -12,13 +12,13 @@ const (
 
 const (
 	// CacheOnlineUsersKey 在线用户key
-	CacheOnlineUsersKey    = "{cache}:online:users" // {cache}:online:users
-	CacheUserOnlineInfoKey = "{cache}:user:online:" // {cache}:user:online:{user_id}
+	CacheOnlineUsersKey    = "{cache}:online:users"   // {cache}:online:users
+	CacheUserOnlineInfoKey = "{cache}:user:online:%d" // {cache}:user:online:{user_id}
 
 )
 
 const (
 	// CacheUserSendCaptchaInfoKey 用户发送验证码
-	CacheUserSendCaptchaInfoKey = "{cache}:user:captcha:" // {cache}:user:online:{account}
+	CacheUserSendCaptchaInfoKey = "{cache}:user:captcha:%s" // {cache}:user:online:{account}
 
 )

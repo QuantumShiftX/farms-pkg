@@ -16,3 +16,9 @@ const (
 	CacheUserOnlineInfoKey = "{cache}:user:online:" // {cache}:user:online:{user_id}
 
 )
+
+const (
+	// CacheUserSendCaptchaInfoKey 用户发送验证码
+	CacheUserSendCaptchaInfoKey = "{cache}:user:captcha:" // {cache}:user:online:{account}
+
+)

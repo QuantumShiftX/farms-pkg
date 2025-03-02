@@ -8,4 +8,6 @@ import "time"
 
 const (
 	CacheCommonKeyExpire = time.Minute * 120
+
+	CacheCaptchaKeyExpire = time.Minute * 15
 )

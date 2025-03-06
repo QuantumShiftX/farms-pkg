@@ -1,6 +1,6 @@
 package cmodel
 
-const TableNameUserInfo = "user_info"
+const TableNameUserInfo = "user_infos"
 
 // UserInfo 用户信息表
 type UserInfo struct {

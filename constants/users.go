@@ -174,3 +174,22 @@ const (
 func (s LoginType) Int64() int64 {
 	return int64(s)
 }
+
+// RewardType 定义奖励类型枚举
+type RewardType int16
+
+const (
+	_              RewardType = iota //
+	RewardTypeCoin                   // 金币
+	RewardTypeItem                   // 道具
+	RewardTypeExp                    // 经验
+	RewardTypeLand                   // 土地
+)
+
+func (t RewardType) Int64() int64 {
+	return int64(t)
+}
+
+func (t RewardType) Int16() int16 {
+	return int16(t)
+}

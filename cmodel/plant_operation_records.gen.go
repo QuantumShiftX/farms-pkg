@@ -35,9 +35,6 @@ type PlantOperationRecord struct {
 
 	// 操作时间（Unix时间戳）
 	OperatedAt int64 `gorm:"column:operated_at;not null;default:extract(epoch from now())" json:"operated_at"`
-
-	// 操作时间（转换为Go时间类型，用于便捷操作）
-	OperatedAtTime time.Time `gorm:"-" json:"operated_at_time"`
 }
 
 // TableName 设置表名

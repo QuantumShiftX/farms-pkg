@@ -12,6 +12,7 @@ type UserInfo struct {
 	FarmID     int64  `gorm:"column:farm_id" json:"farm_id"`
 	LandID     int64  `gorm:"column:land_id" json:"land_id"`
 	Coin       int64  `gorm:"column:coin;default:0" json:"coin"`
+	Status     int64  `gorm:"column:status;default:1" json:"status"`
 	UpdatedAt  int64  `gorm:"column:updated_at;autoUpdateTime" json:"updated_at"`
 }
 

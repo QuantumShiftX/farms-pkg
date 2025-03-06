@@ -12,7 +12,7 @@ const TableNameUserRewardLog = "user_reward_logs"
 type UserRewardLog struct {
 	ID           int64           `gorm:"primaryKey;autoIncrement;column:id" json:"id"`                                                                 // 自增主键ID
 	UserID       int64           `gorm:"not null;index:idx_user_reward_logs_user_id;column:user_id" json:"user_id"`                                    // 用户ID
-	RewardType   int16           `gorm:"not null;default:2;index:idx_user_reward_logs_reward_type;column:reward_type" json:"reward_type"`              // 奖励类型
+	RewardType   int16           `gorm:"not null;default:4;index:idx_user_reward_logs_reward_type;column:reward_type" json:"reward_type"`              // 奖励类型
 	RewardAmount int64           `gorm:"not null;column:reward_amount" json:"reward_amount"`                                                           // 奖励数量
 	Source       string          `gorm:"type:varchar(100);index:idx_user_reward_logs_source;column:source" json:"source"`                              // 奖励来源
 	Description  string          `gorm:"type:text;column:description" json:"description"`                                                              // 奖励描述

@@ -18,3 +18,12 @@ const (
 	CacheSettingAgreementKey = "{cache}:system_agreement:%s" // {cache}:system_setting:{category}
 
 )
+
+/**
+ * {cache}标识，redis集群时slot要根据{xxx}落槽
+ */
+
+const (
+	// SystemVIPLevelKey vip in
+	SystemVIPLevelKey = "{cache}:vip_level:info"
+)

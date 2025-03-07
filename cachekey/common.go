@@ -10,4 +10,6 @@ const (
 	CacheCommonKeyExpire = time.Minute * 120
 
 	CacheCaptchaKeyExpire = time.Minute * 15
+
+	CacheCommonKeyExpireMin = time.Minute * 15
 )

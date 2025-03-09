@@ -52,3 +52,11 @@ func (t FarmOperationType) Int64() int64 {
 func (t FarmOperationType) Int8() int8 {
 	return int8(t)
 }
+
+// InCommonUsageType 常用类型
+type InCommonUsageType int64
+
+const (
+	// 默认无限库存值
+	DefaultUnlimitedStock InCommonUsageType = -1
+)

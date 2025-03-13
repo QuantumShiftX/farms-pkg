@@ -10,15 +10,15 @@ const TableNameStoreInfo = "store_infos"
 
 // StoreInfo mapped from table <store_infos>
 type StoreInfo struct {
-	ID              int64  `gorm:"column:id;primaryKey;autoIncrement:true;comment:自增主键" json:"id"`                // 自增主键
-	ProductType     int8  `gorm:"column:product_type;not null;comment:商品类型: 1-种子 2-肥料" json:"product_type"`      // 商品类型: 1-种子 2-肥料
-	ProductName     string  `gorm:"column:product_name;not null;comment:商品名称" json:"product_name"`                 // 商品名称
-	ProductImageURL string `gorm:"column:product_image_url;not null;comment:商品图片地址" json:"product_image_url"`     // 商品图片地址
-	ProductID       int64  `gorm:"column:product_id;not null;comment:商品ID" json:"product_id"`                     // 商品ID
-	Stock           int64  `gorm:"column:stock;not null;default:-1;comment:库存数量，-1表示无限" json:"stock"`             // 库存数量，-1表示无限
-	Sort            int64  `gorm:"column:sort;not null;default:1;comment:排序字段" json:"sort"`                       // 排序字段
-	IsFree          int8  `gorm:"column:is_free;not null;default:1;comment:是否可以免费领取：1-不可以，2-可以" json:"is_free"`  // 是否可以免费领取：1-不可以，2-可以
-	IsEnabled       int8 `gorm:"column:is_enabled;not null;default:1;comment:是否启用：1-启用，2-禁用" json:"is_enabled"` // 是否启用：1-启用，2-禁用
+	ID              int64  `gorm:"column:id;primaryKey;autoIncrement:true;comment:自增主键"`
+	ProductType     int16  `gorm:"column:product_type;not null;comment:商品类型: 1-种子 2-肥料"`
+	ProductName     string `gorm:"column:product_name;type:varchar(255);not null;comment:商品名称"`
+	ProductImageURL string `gorm:"column:product_image_url;type:varchar(255);not null;comment:商品图片地址"`
+	SkuID           int64  `gorm:"column:sku_id;not null;comment:商品对应的货物ID"`
+	Stock           int64  `gorm:"column:stock;not null;default:-1;comment:库存数量，-1表示无限"`
+	Sort            int64  `gorm:"column:sort;not null;default:1;comment:排序字段"`
+	IsFree          int16  `gorm:"column:is_free;not null;default:1;comment:是否可以免费领取：1-不可以，2-可以"`
+	IsEnabled       int16  `gorm:"column:is_enabled;not null;default:1;comment:是否启用：1-启用，2-禁用"`
 	//
 	gormx.OperationBaseModel
 	gormx.Model

@@ -17,7 +17,7 @@ type UserPlanting struct {
 	PlantTime       int64  `gorm:"column:plant_time;comment:'种植时间（Unix时间戳）'"`
 	WaterCount      int64  `gorm:"column:water_count;default:0;comment:'已浇水总次数'"`
 	FertilizerCount int64  `gorm:"column:fertilizer_count;default:0;comment:'已施肥总次数'"`
-	IsHarvested     int8   `gorm:"column:is_harvested;default:1;comment:'是否已收获：1-未收获，2-已收获'"`
+	IsHarvested     int64  `gorm:"column:is_harvested;default:1;comment:'是否已收获：1-未收获，2-已收获'"`
 	HarvestedAt     int64  `gorm:"column:harvested_at;comment:'收获时间（Unix时间戳）'"`
 	Status          int64  `gorm:"column:status;default:1;comment:'生长状态：1-种子阶段，2-发芽阶段，3-成长阶段，4-开花阶段，5-结果阶段，6-成熟阶段'"`
 	// 快照字段

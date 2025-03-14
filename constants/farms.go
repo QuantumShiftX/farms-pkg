@@ -60,3 +60,17 @@ const (
 	// 默认无限库存值
 	DefaultUnlimitedStock InCommonUsageType = -1
 )
+
+type HarvestType int64
+
+const (
+	_ HarvestType = iota //
+	// HarvestNotReady 不可收获
+	HarvestNotReady
+	// HarvestIsReady 可收获
+	HarvestIsReady
+)
+
+func (t HarvestType) Int64() int64 {
+	return int64(t)
+}

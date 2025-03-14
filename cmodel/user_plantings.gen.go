@@ -20,10 +20,10 @@ type UserPlanting struct {
 	IsHarvested     int8   `gorm:"column:is_harvested;default:1;comment:'是否已收获：1-未收获，2-已收获'"`
 	HarvestedAt     int64  `gorm:"column:harvested_at;comment:'收获时间（Unix时间戳）'"`
 	Status          int64  `gorm:"column:status;default:1;comment:'生长状态：1-种子阶段，2-发芽阶段，3-成长阶段，4-开花阶段，5-结果阶段，6-成熟阶段'"`
-
 	// 快照字段
-	ProductName                       string `gorm:"column:product_name;type:LowCardinality(String);comment:'种植时商品名称快照'"`
+	CropID                            int64  `gorm:"column:crop_id;comment:'作物ID（对应商店信息中的sku_id或者种子信息中的id）'"`
 	CropName                          string `gorm:"column:crop_name;type:LowCardinality(String);comment:'种植时作物的作物名称快照'"`
+	ProductName                       string `gorm:"column:product_name;type:LowCardinality(String);comment:'种植时商品名称快照'"`
 	Price                             int64  `gorm:"column:price;comment:'种植时作物的价格快照'"`
 	GrowthTime                        int64  `gorm:"column:growth_time;comment:'种植时作物的生长时间快照'"`
 	CoinReward                        int64  `gorm:"column:coin_reward;comment:'种植时作物的金币奖励快照'"`

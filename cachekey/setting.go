@@ -27,3 +27,14 @@ const (
 	// SystemVIPLevelKey vip in
 	SystemVIPLevelKey = "{cache}:vip_level:info"
 )
+
+/**
+ * {cache}标识，redis集群时slot要根据{xxx}落槽
+ */
+
+const (
+	// NotifyTypeCodeLanguageKey 通知缓存（{type_code}:{language_code}）
+	NotifyTypeCodeLanguageKey = "{cache}:notify:%s:info:%s"
+	// NotifySubTypeCodeLanguageKey 通知缓存（{sub_type_code}:{language_code}）
+	NotifySubTypeCodeLanguageKey = "{cache}:notify_sub:%s:info:%s"
+)

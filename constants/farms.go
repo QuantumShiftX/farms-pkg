@@ -65,11 +65,15 @@ type HarvestType int64
 
 const (
 	_ HarvestType = iota //
-	// HarvestNotReady 不可收获
-	HarvestNotReady
-	// HarvestIsReady 可收获
-	HarvestIsReady
+	// PlantedHarvestNotReady 1未收获(已种植)
+	PlantedHarvestNotReady
+	// ReadyToHarvest 可收获
+	ReadyToHarvest
+	// EndHarvested 已收获
+	EndHarvested
 )
+
+// 5 - 已收获
 
 func (t HarvestType) Int64() int64 {
 	return int64(t)

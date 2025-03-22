@@ -1,4 +1,4 @@
-package cmodel
+package pmodel
 
 import (
 	"github.com/QuantumShiftX/golib/stores/gormx"
@@ -8,18 +8,18 @@ const TableNameUserPlanting = "user_plantings"
 
 // UserPlanting represents the user_plantings table in ClickHouse
 type UserPlanting struct {
-	ID              string `gorm:"column:id;type:UUID;default:generateUUIDv4();primaryKey"`
-	PlantID         int64  `gorm:"column:plant_id;comment:'种植记录ID'"`
-	UserID          int64  `gorm:"column:user_id;comment:'用户ID'"`
-	FarmID          int64  `gorm:"column:farm_id;comment:'农场ID'"`
-	LandID          int64  `gorm:"column:land_id;comment:'土地ID'"`
-	StorageID       int64  `gorm:"column:storage_id;comment:'用户的仓库物品ID'"`
-	PlantTime       int64  `gorm:"column:plant_time;comment:'种植时间（Unix时间戳）'"`
-	WaterCount      int64  `gorm:"column:water_count;default:0;comment:'已浇水总次数'"`
-	FertilizerCount int64  `gorm:"column:fertilizer_count;default:0;comment:'已施肥总次数'"`
-	IsHarvested     int64  `gorm:"column:is_harvested;default:1;comment:'是否已收获：1、未收获(已种植) 2、可收获 3、已收获'"`
-	HarvestedAt     int64  `gorm:"column:harvested_at;comment:'收获时间（Unix时间戳）'"`
-	Status          int64  `gorm:"column:status;default:1;comment:'生长状态：1-种子阶段，2-发芽阶段，3-成长阶段，4-开花阶段，5-结果阶段，6-成熟阶段'"`
+	ID              int64 `gorm:"column:id;primaryKey"`
+	PlantID         int64 `gorm:"column:plant_id;comment:'种植记录ID'"`
+	UserID          int64 `gorm:"column:user_id;comment:'用户ID'"`
+	FarmID          int64 `gorm:"column:farm_id;comment:'农场ID'"`
+	LandID          int64 `gorm:"column:land_id;comment:'土地ID'"`
+	StorageID       int64 `gorm:"column:storage_id;comment:'用户的仓库物品ID'"`
+	PlantTime       int64 `gorm:"column:plant_time;comment:'种植时间（Unix时间戳）'"`
+	WaterCount      int64 `gorm:"column:water_count;default:0;comment:'已浇水总次数'"`
+	FertilizerCount int64 `gorm:"column:fertilizer_count;default:0;comment:'已施肥总次数'"`
+	IsHarvested     int64 `gorm:"column:is_harvested;default:1;comment:'是否已收获：1、未收获(已种植) 2、可收获 3、已收获'"`
+	HarvestedAt     int64 `gorm:"column:harvested_at;comment:'收获时间（Unix时间戳）'"`
+	Status          int64 `gorm:"column:status;default:1;comment:'生长状态：1-种子阶段，2-发芽阶段，3-成长阶段，4-开花阶段，5-结果阶段，6-成熟阶段'"`
 	// 快照字段
 	CropID                            int64  `gorm:"column:crop_id;comment:'作物ID（对应商店信息中的sku_id或者种子信息中的id）'"`
 	CropName                          string `gorm:"column:crop_name;type:LowCardinality(String);comment:'种植时作物的作物名称快照'"`

@@ -17,6 +17,11 @@ const (
 	UserDuplicateUsernameError                      // 用户名已存在
 	UserInvalidEmailError                           // 无效的邮箱格式
 	UserTokenExpiredError                           // 用户令牌过期
+	UserInvalidPhoneError                           // 无效的电话格式
+	UserValidationTypeError                         // 验证类型错误
+	UserCredentialsError                            // 用户或者密码信息有误
+	UserNameExistsError                             // 用户名字已存在
+	UserValidationMatchError                        // 验证匹配失败
 )
 
 var (
@@ -32,4 +37,9 @@ var (
 	ErrUserDuplicateUsername = xerr.New(UserDuplicateUsernameError, "用户名已存在")
 	ErrUserInvalidEmail      = xerr.New(UserInvalidEmailError, "无效的邮箱格式")
 	ErrUserTokenExpired      = xerr.New(UserTokenExpiredError, "用户令牌已过期")
+	ErrUserInvalidPhone      = xerr.New(UserInvalidPhoneError, "无效的电话格式")
+	ErrUserValidationType    = xerr.New(UserValidationTypeError, "验证类型错误")
+	ErrUserCredentials       = xerr.New(UserCredentialsError, "用户或密码信息有误")
+	ErrUserNameExists        = xerr.New(UserNameExistsError, "用户名字已存在")
+	ErrUserValidationMatch   = xerr.New(UserValidationMatchError, "验证匹配失败")
 )

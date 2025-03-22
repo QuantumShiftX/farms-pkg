@@ -65,7 +65,7 @@ type HarvestType int64
 
 const (
 	_ HarvestType = iota //
-	// PlantedHarvestNotReady 1未收获(已种植)
+	// PlantedHarvestNotReady 1 不可收获/未收获(已种植)
 	PlantedHarvestNotReady
 	// ReadyToHarvest 可收获
 	ReadyToHarvest

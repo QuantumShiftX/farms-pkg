@@ -127,3 +127,247 @@ func GetAllSubTypesByType(notificationType NotificationType) []NotificationSubTy
 		return []NotificationSubType{}
 	}
 }
+
+// NotificationTypeInt 定义整数通知类型
+type NotificationTypeInt int64
+
+func (t NotificationTypeInt) Int64() int64 {
+	return int64(t)
+}
+
+const (
+	// NotificationTypeUnspecified 未指定类型
+	NotificationTypeUnspecified NotificationTypeInt = 0
+	// NotificationTypeDailyGreeting 日常问候类通知
+	NotificationTypeDailyGreeting NotificationTypeInt = 1000
+	// NotificationTypeOperationTip 游戏操作提示类通知
+	NotificationTypeOperationTip NotificationTypeInt = 2000
+	// NotificationTypeFriendInfo 好友互动通知
+	NotificationTypeFriendInfo NotificationTypeInt = 3000
+	// NotificationTypeSystemInfo 系统通知
+	NotificationTypeSystemInfo NotificationTypeInt = 4000
+)
+
+// NotificationSubTypeInt 定义整数通知子类型
+type NotificationSubTypeInt int64
+
+func (t NotificationSubTypeInt) Int64() int64 {
+	return int64(t)
+}
+
+const (
+	// NotificationSubTypeUnspecified 未指定子类型
+	NotificationSubTypeUnspecified NotificationSubTypeInt = 0
+
+	// 日常问候子类型 (1000-1999范围)
+	// NotificationSubTypeMorning 早上问候
+	NotificationSubTypeMorning NotificationSubTypeInt = 1001
+	// NotificationSubTypeNoon 中午问候
+	NotificationSubTypeNoon NotificationSubTypeInt = 1002
+	// NotificationSubTypeEvening 晚上问候
+	NotificationSubTypeEvening NotificationSubTypeInt = 1003
+	// NotificationSubTypeReturnPlayer 老玩家回归问候
+	NotificationSubTypeReturnPlayer NotificationSubTypeInt = 1004
+
+	// 操作提示子类型 (2000-2999范围)
+	// NotificationSubTypeCropNeedWater 农作物待浇水
+	NotificationSubTypeCropNeedWater NotificationSubTypeInt = 2001
+	// NotificationSubTypeCropCanHarvest 农作物待收获
+	NotificationSubTypeCropCanHarvest NotificationSubTypeInt = 2002
+	// NotificationSubTypeSeedWaitPlant 种子待种植
+	NotificationSubTypeSeedWaitPlant NotificationSubTypeInt = 2003
+	// NotificationSubTypeCropNeedFertilize 农作物待施肥
+	NotificationSubTypeCropNeedFertilize NotificationSubTypeInt = 2004
+	// NotificationSubTypeBuySeed 购买种子
+	NotificationSubTypeBuySeed NotificationSubTypeInt = 2005
+
+	// 好友信息子类型 (3000-3999范围)
+	// NotificationSubTypeFriendRegister 新好友注册
+	NotificationSubTypeFriendRegister NotificationSubTypeInt = 3001
+	// NotificationSubTypeFriendWatered 好友浇水
+	NotificationSubTypeFriendWatered NotificationSubTypeInt = 3002
+	// NotificationSubTypeFriendVisit 好友查看农场
+	NotificationSubTypeFriendVisit NotificationSubTypeInt = 3003
+	// NotificationSubTypeFriendHarvest 好友收获
+	NotificationSubTypeFriendHarvest NotificationSubTypeInt = 3004
+	// NotificationSubTypeFriendBuySeed 好友购买种子
+	NotificationSubTypeFriendBuySeed NotificationSubTypeInt = 3005
+	// NotificationSubTypeFriendPlant 好友种植
+	NotificationSubTypeFriendPlant NotificationSubTypeInt = 3006
+
+	// 系统信息子类型 (4000-4999范围)
+	// NotificationSubTypeDepositSuccess 存款成功
+	NotificationSubTypeDepositSuccess NotificationSubTypeInt = 4001
+	// NotificationSubTypeWithdrawAvailable 可以提款
+	NotificationSubTypeWithdrawAvailable NotificationSubTypeInt = 4002
+	// NotificationSubTypeVipUpgrade VIP等级提升
+	NotificationSubTypeVipUpgrade NotificationSubTypeInt = 4003
+	// NotificationSubTypeRankingBreak 打破排行榜记录
+	NotificationSubTypeRankingBreak NotificationSubTypeInt = 4004
+)
+
+// 字符串类型转整数类型的映射
+var notificationTypeToInt = map[NotificationType]NotificationTypeInt{
+	DailyGreeting: NotificationTypeDailyGreeting,
+	OperationTip:  NotificationTypeOperationTip,
+	FriendInfo:    NotificationTypeFriendInfo,
+	SystemInfo:    NotificationTypeSystemInfo,
+}
+
+// 整数类型转字符串类型的映射
+var notificationIntToType = map[NotificationTypeInt]NotificationType{
+	NotificationTypeDailyGreeting: DailyGreeting,
+	NotificationTypeOperationTip:  OperationTip,
+	NotificationTypeFriendInfo:    FriendInfo,
+	NotificationTypeSystemInfo:    SystemInfo,
+}
+
+// 子类型字符串转整数的映射
+var notificationSubTypeToInt = map[NotificationType]map[NotificationSubType]NotificationSubTypeInt{
+	DailyGreeting: {
+		DailyGreetingMorning:      NotificationSubTypeMorning,
+		DailyGreetingNoon:         NotificationSubTypeNoon,
+		DailyGreetingEvening:      NotificationSubTypeEvening,
+		DailyGreetingReturnPlayer: NotificationSubTypeReturnPlayer,
+	},
+	OperationTip: {
+		OperationTipCropNeedWater:     NotificationSubTypeCropNeedWater,
+		OperationTipCropCanHarvest:    NotificationSubTypeCropCanHarvest,
+		OperationTipSeedWaitPlant:     NotificationSubTypeSeedWaitPlant,
+		OperationTipCropNeedFertilize: NotificationSubTypeCropNeedFertilize,
+		OperationTipBuySeed:           NotificationSubTypeBuySeed,
+	},
+	FriendInfo: {
+		FriendInfoRegister: NotificationSubTypeFriendRegister,
+		FriendInfoWatered:  NotificationSubTypeFriendWatered,
+		FriendInfoVisit:    NotificationSubTypeFriendVisit,
+		FriendInfoHarvest:  NotificationSubTypeFriendHarvest,
+		FriendInfoBuySeed:  NotificationSubTypeFriendBuySeed,
+		FriendInfoPlant:    NotificationSubTypeFriendPlant,
+	},
+	SystemInfo: {
+		SystemInfoDepositSuccess:    NotificationSubTypeDepositSuccess,
+		SystemInfoWithdrawAvailable: NotificationSubTypeWithdrawAvailable,
+		SystemInfoVipUpgrade:        NotificationSubTypeVipUpgrade,
+		SystemInfoRankingBreak:      NotificationSubTypeRankingBreak,
+	},
+}
+
+// 子类型整数转字符串的映射
+var notificationSubTypeIntToSubType = map[NotificationSubTypeInt]NotificationSubType{
+	// 日常问候子类型
+	NotificationSubTypeMorning:      DailyGreetingMorning,
+	NotificationSubTypeNoon:         DailyGreetingNoon,
+	NotificationSubTypeEvening:      DailyGreetingEvening,
+	NotificationSubTypeReturnPlayer: DailyGreetingReturnPlayer,
+
+	// 操作提示子类型
+	NotificationSubTypeCropNeedWater:     OperationTipCropNeedWater,
+	NotificationSubTypeCropCanHarvest:    OperationTipCropCanHarvest,
+	NotificationSubTypeSeedWaitPlant:     OperationTipSeedWaitPlant,
+	NotificationSubTypeCropNeedFertilize: OperationTipCropNeedFertilize,
+	NotificationSubTypeBuySeed:           OperationTipBuySeed,
+
+	// 好友信息子类型
+	NotificationSubTypeFriendRegister: FriendInfoRegister,
+	NotificationSubTypeFriendWatered:  FriendInfoWatered,
+	NotificationSubTypeFriendVisit:    FriendInfoVisit,
+	NotificationSubTypeFriendHarvest:  FriendInfoHarvest,
+	NotificationSubTypeFriendBuySeed:  FriendInfoBuySeed,
+	NotificationSubTypeFriendPlant:    FriendInfoPlant,
+
+	// 系统信息子类型
+	NotificationSubTypeDepositSuccess:    SystemInfoDepositSuccess,
+	NotificationSubTypeWithdrawAvailable: SystemInfoWithdrawAvailable,
+	NotificationSubTypeVipUpgrade:        SystemInfoVipUpgrade,
+	NotificationSubTypeRankingBreak:      SystemInfoRankingBreak,
+}
+
+// 子类型整数与主类型的映射关系
+var subTypeIntToMainTypeInt = map[NotificationSubTypeInt]NotificationTypeInt{
+	// 日常问候子类型
+	NotificationSubTypeMorning:      NotificationTypeDailyGreeting,
+	NotificationSubTypeNoon:         NotificationTypeDailyGreeting,
+	NotificationSubTypeEvening:      NotificationTypeDailyGreeting,
+	NotificationSubTypeReturnPlayer: NotificationTypeDailyGreeting,
+
+	// 操作提示子类型
+	NotificationSubTypeCropNeedWater:     NotificationTypeOperationTip,
+	NotificationSubTypeCropCanHarvest:    NotificationTypeOperationTip,
+	NotificationSubTypeSeedWaitPlant:     NotificationTypeOperationTip,
+	NotificationSubTypeCropNeedFertilize: NotificationTypeOperationTip,
+	NotificationSubTypeBuySeed:           NotificationTypeOperationTip,
+
+	// 好友信息子类型
+	NotificationSubTypeFriendRegister: NotificationTypeFriendInfo,
+	NotificationSubTypeFriendWatered:  NotificationTypeFriendInfo,
+	NotificationSubTypeFriendVisit:    NotificationTypeFriendInfo,
+	NotificationSubTypeFriendHarvest:  NotificationTypeFriendInfo,
+	NotificationSubTypeFriendBuySeed:  NotificationTypeFriendInfo,
+	NotificationSubTypeFriendPlant:    NotificationTypeFriendInfo,
+
+	// 系统信息子类型
+	NotificationSubTypeDepositSuccess:    NotificationTypeSystemInfo,
+	NotificationSubTypeWithdrawAvailable: NotificationTypeSystemInfo,
+	NotificationSubTypeVipUpgrade:        NotificationTypeSystemInfo,
+	NotificationSubTypeRankingBreak:      NotificationTypeSystemInfo,
+}
+
+// StringTypeToInt 将字符串类型转换为整数类型
+func StringTypeToInt(t NotificationType) NotificationTypeInt {
+	if val, ok := notificationTypeToInt[t]; ok {
+		return val
+	}
+	return NotificationTypeUnspecified
+}
+
+// IntTypeToString 将整数类型转换为字符串类型
+func IntTypeToString(t NotificationTypeInt) NotificationType {
+	if val, ok := notificationIntToType[t]; ok {
+		return val
+	}
+	return ""
+}
+
+// StringSubTypeToInt 将字符串子类型转换为整数子类型
+func StringSubTypeToInt(mainType NotificationType, subType NotificationSubType) NotificationSubTypeInt {
+	if mainTypeMap, ok := notificationSubTypeToInt[mainType]; ok {
+		if val, ok := mainTypeMap[subType]; ok {
+			return val
+		}
+	}
+	return NotificationSubTypeUnspecified
+}
+
+// IntSubTypeToString 将整数子类型转换为字符串子类型
+func IntSubTypeToString(subTypeInt NotificationSubTypeInt) NotificationSubType {
+	if val, ok := notificationSubTypeIntToSubType[subTypeInt]; ok {
+		return val
+	}
+	return ""
+}
+
+// GetMainTypeFromSubTypeInt 从子类型整数获取主类型整数
+func GetMainTypeFromSubTypeInt(subTypeInt NotificationSubTypeInt) NotificationTypeInt {
+	if val, ok := subTypeIntToMainTypeInt[subTypeInt]; ok {
+		return val
+	}
+	return NotificationTypeUnspecified
+}
+
+// GetMainTypeStrFromSubTypeInt 从子类型整数获取主类型字符串
+func GetMainTypeStrFromSubTypeInt(subTypeInt NotificationSubTypeInt) NotificationType {
+	mainTypeInt := GetMainTypeFromSubTypeInt(subTypeInt)
+	return IntTypeToString(mainTypeInt)
+}
+
+// GetAllTypeMapping 获取所有类型映射关系
+func GetAllTypeMapping() map[string]interface{} {
+	return map[string]interface{}{
+		"notificationTypeToInt":           notificationTypeToInt,
+		"notificationIntToType":           notificationIntToType,
+		"notificationSubTypeToInt":        notificationSubTypeToInt,
+		"notificationSubTypeIntToSubType": notificationSubTypeIntToSubType,
+		"subTypeIntToMainTypeInt":         subTypeIntToMainTypeInt,
+	}
+}

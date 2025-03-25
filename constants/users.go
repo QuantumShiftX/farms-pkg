@@ -193,3 +193,30 @@ func (t RewardType) Int64() int64 {
 func (t RewardType) Int16() int16 {
 	return int16(t)
 }
+
+// CategoryType 定义用户操作类别的枚举类型
+type CategoryType int64
+
+const (
+	CategoryModifyPassword          CategoryType = 1 // 修改密码
+	CategoryModifySecondaryPassword CategoryType = 2 // 修改设置二级密码
+	CategoryVerifyAccount           CategoryType = 3 // 验证账号
+)
+
+func (c CategoryType) Int64() int64 {
+	return int64(c)
+}
+
+// CategoryTypeString 将 CategoryType 转换为字符串
+func (c CategoryType) String() string {
+	switch c {
+	case CategoryModifyPassword:
+		return "修改密码"
+	case CategoryModifySecondaryPassword:
+		return "修改设置二级密码"
+	case CategoryVerifyAccount:
+		return "验证账号"
+	default:
+		return "未知类别"
+	}
+}

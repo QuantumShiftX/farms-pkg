@@ -4,7 +4,7 @@ go 1.23.4
 
 require (
 	github.com/QuantumShiftX/farms-proto/proto-gen-go v0.0.0-20250303143745-5e8ea685a9d6
-	github.com/QuantumShiftX/golib v0.0.0-20250127035539-8210b9c04906
+	github.com/QuantumShiftX/golib v0.0.3-0.20250327172011-8b123a4646e7
 	gorm.io/datatypes v1.2.5
 )
 
@@ -39,7 +39,7 @@ require (
 	github.com/segmentio/asm v1.2.0 // indirect
 	github.com/shopspring/decimal v1.4.0 // indirect
 	github.com/spaolacci/murmur3 v1.1.0 // indirect
-	github.com/spf13/cast v1.3.0 // indirect
+	github.com/spf13/cast v1.7.0 // indirect
 	github.com/zeromicro/go-zero v1.8.0 // indirect
 	go.opentelemetry.io/otel v1.32.0 // indirect
 	go.opentelemetry.io/otel/exporters/jaeger v1.17.0 // indirect

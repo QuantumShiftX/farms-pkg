@@ -49,6 +49,18 @@ func (t FarmOperationType) Int64() int64 {
 	return int64(t)
 }
 
+// CategoryTypeString 将 CategoryType 转换为字符串
+func (t FarmOperationType) String() string {
+	switch t {
+	case FarmOperationTypeWater:
+		return "water"
+	case FarmOperationTypeFertilizer:
+		return "fertilize"
+	default:
+		return "unknown"
+	}
+}
+
 func (t FarmOperationType) Int8() int8 {
 	return int8(t)
 }

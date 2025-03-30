@@ -23,6 +23,10 @@ const (
 	RechargeOrderStatusTypeCancel                                 // 已取消
 )
 
+func (t RechargeOrderStatusType) Int8() int8 {
+	return int8(t)
+}
+
 // RechargeOrderType 充值订单类型
 // RechargeOrderTypeOnline   在线充值
 // RechargeOrderTypeTransfer  转账充值
@@ -36,8 +40,8 @@ const (
 	RechargeOrderTypeProxy                      // 客服代充
 )
 
-func (t RechargeOrderType) Int() int {
-	return int(t)
+func (t RechargeOrderType) Int8() int8 {
+	return int8(t)
 }
 
 func (t RechargeOrderType) String() string {
@@ -74,3 +78,7 @@ const (
 	RechargeOrderTagTypeExamineDepositPass                                    // 入款审核通过(客服代充用)
 	RechargeOrderTagTypeExamineDepositRefuse                                  // 入款审核拒绝(客服代充用)
 )
+
+func (t RechargeOrderTagType) Int8() int8 {
+	return int8(t)
+}

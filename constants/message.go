@@ -4,7 +4,8 @@ package constants
 type MessageType int64
 
 const (
-	UserNotificationInfoMsgType MessageType = 800 // 用户通知结构---公告信息body
+	UserNotificationInfoMsgType  MessageType = 800 // 用户通知结构---公告信息body
+	UserBalanceNoticeInfoMsgType MessageType = 801 // 用户通知结构---余额信息body
 
 )
 

@@ -13,6 +13,7 @@ type Announcement struct {
 	Title        string `gorm:"column:title;size:255"`
 	Content      string `gorm:"column:content;type:text"`
 	ShowStatus   int8   `gorm:"column:show_status;default:1;not null"`
+	Status       int8   `gorm:"column:status;default:1;not null"`
 	Sort         int64  `gorm:"column:sort;default:0"`
 	StartTime    int64  `gorm:"column:start_time;not null"`
 	EndTime      int64  `gorm:"column:end_time;not null"`

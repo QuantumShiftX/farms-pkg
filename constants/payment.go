@@ -59,3 +59,17 @@ const (
 func (t RechargeOrderTagType) Int8() int8 {
 	return int8(t)
 }
+
+// 定义账号类型枚举 （用户提现）
+type AccountType int
+
+const (
+	PhoneNumber AccountType = iota + 1 // 手机号
+	BankCard                           // 银行卡
+	PIX                                // PIX
+	EWallet                            // 电子钱包
+)
+
+func (t AccountType) Int8() int8 {
+	return int8(t)
+}

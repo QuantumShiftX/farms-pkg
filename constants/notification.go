@@ -371,3 +371,12 @@ func GetAllTypeMapping() map[string]interface{} {
 		"subTypeIntToMainTypeInt":         subTypeIntToMainTypeInt,
 	}
 }
+
+// 定义状态枚举
+type AnnouncementDisplayStatus int
+
+const (
+	Pending    AnnouncementDisplayStatus = iota + 1 // 待展示
+	Displaying                                      // 展示中
+	Expired                                         // 已过期
+)

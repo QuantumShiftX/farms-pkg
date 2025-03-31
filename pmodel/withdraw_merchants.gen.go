@@ -10,7 +10,7 @@ type WithdrawMerchant struct {
 	ID                    int64  `gorm:"column:id;primaryKey;autoIncrement:true;comment:自增主键" json:"id"`                                              // 自增主键
 	Name                  string `gorm:"column:name;type:varchar(255);not null;comment:三方代付平台名称" json:"name"`                                         // 三方代付平台名称
 	CurrencyCode          string `gorm:"column:currency_code;type:varchar(255);not null;comment:币种编码" json:"currency_code"`                           // 币种编码
-	PaymentConfigID       int32  `gorm:"column:payment_config_id;type:integer;not null;comment:三方支付/代付id" json:"payment_config_id"`                   // 三方支付/代付id
+	PaymentConfigID       int64  `gorm:"column:payment_config_id;type:integer;not null;comment:三方支付/代付id" json:"payment_config_id"`                   // 三方支付/代付id
 	MerchantNo            string `gorm:"column:merchant_no;type:varchar(255);not null;comment:商户号" json:"merchant_no"`                                // 商户号
 	Key                   string `gorm:"column:key;type:varchar(255);not null;comment:密钥" json:"key"`                                                 // 密钥
 	ExternalInfo          string `gorm:"column:external_info;type:text;not null;comment:扩展信息" json:"external_info"`                                   // 扩展信息

@@ -12,7 +12,7 @@ type WithdrawPaymentRecord struct {
 	ThirdOrderNumber   string `gorm:"column:third_order_number;type:varchar(255);comment:三方订单号" json:"third_order_number"`                                                                         // 三方订单号
 	WithdrawMerchantID int64  `gorm:"column:withdraw_merchant_id;not null;comment:三方代付商户ID" json:"withdraw_merchant_id"`                                                                           // 三方代付商户ID
 	WithdrawTypeID     int64  `gorm:"column:withdraw_type_id;not null;comment:提现方式" json:"withdraw_type_id"`                                                                                       // 提现方式
-	Status             int32  `gorm:"column:status;not null;index:idx_withdraw_payment_records_user_id_status,priority:2;comment:代付状态 1-订单提交成功 2-付款失败 3-已付款 4-已强制出款 5-已强制取消 6-强制失败" json:"status"` // 代付状态 1-订单提交成功 2-付款失败 3-已付款 4-已强制出款 5-已强制取消 6-强制失败
+	Status             int64  `gorm:"column:status;not null;index:idx_withdraw_payment_records_user_id_status,priority:2;comment:代付状态 1-订单提交成功 2-付款失败 3-已付款 4-已强制出款 5-已强制取消 6-强制失败" json:"status"` // 代付状态 1-订单提交成功 2-付款失败 3-已付款 4-已强制出款 5-已强制取消 6-强制失败
 	Remark             string `gorm:"column:remark;type:varchar(255);comment:备注" json:"remark"`                                                                                                    // 备注
 	Req                string `gorm:"column:req;type:text;comment:请求参数" json:"req"`                                                                                                                // 请求参数
 	Resp               string `gorm:"column:resp;type:text;comment:响应参数" json:"resp"`                                                                                                              // 响应参数

@@ -1,5 +1,7 @@
 package pmodel
 
+import "github.com/QuantumShiftX/golib/stores/gormx"
+
 const TableNameRechargeOrderSupply = "recharge_order_supplies"
 
 // RechargeOrderSupply 映射自表 <recharge_order_supplies>
@@ -36,12 +38,9 @@ type RechargeOrderSupply struct {
 	Remark                   string  `gorm:"column:remark;size:1000;comment:备注" json:"remark"`                                                                                       // 备注
 	TransferVoucher          string  `gorm:"column:transfer_voucher;size:255;comment:转账凭证" json:"transfer_voucher"`                                                                  // 转账凭证
 	RechargeInfo             string  `gorm:"column:recharge_info;type:jsonb;comment:充值信息" json:"recharge_info"`                                                                      // 充值信息
-	OperatorID               int64   `gorm:"column:operator_id;not null;default:0;comment:操作员ID" json:"operator_id"`                                                                 // 操作员ID
-	Operator                 string  `gorm:"column:operator;size:60;comment:操作员姓名" json:"operator"`                                                                                  // 操作员姓名
-	OperationTime            int64   `gorm:"column:operation_time;not null;default:0;comment:操作时间" json:"operation_time"`                                                            // 操作时间
-	CreatedAt                int64   `gorm:"column:created_at;not null;default:0;index:idx_recharge_order_supplies_created_at;comment:创建时间" json:"created_at"`                       // 创建时间
-	UpdatedAt                int64   `gorm:"column:updated_at;not null;default:0;comment:更新时间" json:"updated_at"`                                                                    // 更新时间
-	DeletedAt                int64   `gorm:"column:deleted_at;not null;default:0;comment:删除时间" json:"deleted_at"`                                                                    // 删除时间
+	//
+	gormx.OperationBaseModel
+	gormx.Model
 }
 
 // TableName RechargeOrderSupply 表名

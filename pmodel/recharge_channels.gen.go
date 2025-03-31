@@ -1,5 +1,7 @@
 package pmodel
 
+import "github.com/QuantumShiftX/golib/stores/gormx"
+
 const TableNameRechargeChannel = "recharge_channels"
 
 // RechargeChannel 映射自表 <recharge_channels>
@@ -41,12 +43,9 @@ type RechargeChannel struct {
 	CustomerLinkType        int8    `gorm:"column:customer_link_type;comment:客服链接类型" json:"customer_link_type"`                         // 客服链接类型
 	CustomerLink            string  `gorm:"column:customer_link;size:255;comment:客服链接" json:"customer_link"`                            // 客服链接
 	CustomerCurrencyCodes   string  `gorm:"column:customer_currency_codes;type:jsonb;comment:货币" json:"customer_currency_codes"`        // 货币
-	OperatorID              int64   `gorm:"column:operator_id;not null;default:0;comment:操作员ID" json:"operator_id"`                     // 操作员ID
-	Operator                string  `gorm:"column:operator;size:255;comment:操作员姓名" json:"operator"`                                     // 操作员姓名
-	OperationTime           int64   `gorm:"column:operation_time;not null;default:0;comment:操作时间" json:"operation_time"`                // 操作时间
-	CreatedAt               int64   `gorm:"column:created_at;not null;default:0;comment:创建时间" json:"created_at"`                        // 创建时间
-	UpdatedAt               int64   `gorm:"column:updated_at;not null;default:0;comment:更新时间" json:"updated_at"`                        // 更新时间
-	DeletedAt               int64   `gorm:"column:deleted_at;not null;default:0;comment:删除时间" json:"deleted_at"`                        // 删除时间
+	//
+	gormx.OperationBaseModel
+	gormx.Model
 }
 
 // TableName RechargeChannel 表名

@@ -1,5 +1,7 @@
 package pmodel
 
+import "github.com/QuantumShiftX/golib/stores/gormx"
+
 const TableNameRechargeOrder = "recharge_orders"
 
 // RechargeOrder 映射自表 <recharge_orders>
@@ -39,12 +41,9 @@ type RechargeOrder struct {
 	BankID                       int64   `gorm:"column:bank_id;comment:银行id" json:"bank_id"`                                                                                                                                         // 银行id
 	IP                           string  `gorm:"column:ip;size:60;comment:操作IP" json:"ip"`                                                                                                                                           // 操作IP
 	RechargeCountType            int8    `gorm:"column:recharge_count_type;default:0;comment:充值次数类型" json:"recharge_count_type"`                                                                                                     // 充值次数类型
-	OperatorID                   int64   `gorm:"column:operator_id;not null;default:0;comment:操作员ID" json:"operator_id"`                                                                                                             // 操作员ID
-	Operator                     string  `gorm:"column:operator;size:255;comment:操作员姓名" json:"operator"`                                                                                                                             // 操作员姓名
-	OperationTime                int64   `gorm:"column:operation_time;not null;default:0;comment:操作时间" json:"operation_time"`                                                                                                        // 操作时间
-	CreatedAt                    int64   `gorm:"column:created_at;not null;default:0;index:idx_recharge_orders_created_at;comment:创建时间" json:"created_at"`                                                                           // 创建时间
-	UpdatedAt                    int64   `gorm:"column:updated_at;not null;default:0;comment:更新时间" json:"updated_at"`                                                                                                                // 更新时间
-	DeletedAt                    int64   `gorm:"column:deleted_at;not null;default:0;comment:删除时间" json:"deleted_at"`                                                                                                                // 删除时间
+	//
+	gormx.OperationBaseModel
+	gormx.Model
 }
 
 // TableName RechargeOrder 表名

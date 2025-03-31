@@ -12,11 +12,10 @@ type Announcement struct {
 	Name         string `gorm:"column:name;size:255;not null"`
 	Title        string `gorm:"column:title;size:255"`
 	Content      string `gorm:"column:content;type:text"`
-	ShowStatus   int8   `gorm:"column:show_status;default:1;not null"`
 	Status       int8   `gorm:"column:status;default:1;not null"`
 	Sort         int64  `gorm:"column:sort;default:0"`
-	StartTime    int64  `gorm:"column:start_time;not null"`
-	EndTime      int64  `gorm:"column:end_time;not null"`
+	StartTime    int64  `gorm:"column:start_time;not null"` // 待展示/展示中/已过期
+	EndTime      int64  `gorm:"column:end_time;not null"`   // 待展示/展示中/已过期
 	Remark       string `gorm:"column:remark;size:500"`
 	//
 	gormx.OperationBaseModel

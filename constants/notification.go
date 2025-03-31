@@ -380,3 +380,7 @@ const (
 	Displaying                                      // 展示中
 	Expired                                         // 已过期
 )
+
+func (t AnnouncementDisplayStatus) Int8() int8 {
+	return int8(t)
+}

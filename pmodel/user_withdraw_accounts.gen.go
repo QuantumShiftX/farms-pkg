@@ -17,8 +17,11 @@ type UserWithdrawAccount struct {
 	AccountType  int8   `gorm:"column:account_type;type:smallint;not null;default:0;comment:账号类型 1:手机号 2:钱包id" json:"account_type"`                                                // 账号类型 1:手机号 2:钱包id
 	CountryCode  int8   `gorm:"column:country_code;type:smallint;not null;default:0;comment:国家/地区id" json:"country_code"`                                                          // 国家/地区id
 	IFSC         string `gorm:"column:ifsc;type:varchar(1024);not null;default:'';comment:开户行/IFSC" json:"ifsc"`                                                                   // 开户行/IFSC
+	Branch       string `gorm:"column:branch;type:varchar(1024);not null;default:'';comment:支行名称" json:"branch"`                                                                   // 支行名称
 	Remark       string `gorm:"column:remark;type:varchar(1024);not null;default:'';comment:后台备注" json:"remark"`                                                                   // 后台备注
-	Status       int8   `gorm:"column:status;type:smallint;not null;default:0;index:idx_user_withdraw_accounts_user_id_status,priority:2;comment:启用/停用状态 1:启用 2:停用" json:"status"` // 启用/停用状态 1:启用 2:停用
+	Status       int8   `gorm:"column:status;type:smallint;not null;default:1;index:idx_user_withdraw_accounts_user_id_status,priority:2;comment:启用/停用状态 1:启用 2:停用" json:"status"` // 启用/停用状态 1:启用 2:停用
+	IsDefault    int8   `gorm:"column:is_default;type:smallint;not null;default:2;,priority:2;comment:是否默认账户 1:是 2:否" json:"is_default"`                                           // 是否默认账户 1:是 2:否
+	VerifyStatus int8   `gorm:"column:verify_status;type:smallint;not null;default:3;,priority:2;comment:验证状态 1:已验证 2:验证失败 3:未验证" json:"verify_status"`                            // 验证状态 1:已验证 2:验证失败 3:未验证
 	gormx.OperationBaseModel
 	gormx.Model
 }

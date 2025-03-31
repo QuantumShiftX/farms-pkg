@@ -37,7 +37,7 @@ type RechargeOrderSupply struct {
 	ReviewTime               int64   `gorm:"column:review_time;not null;comment:审核时间" json:"review_time"`                                                                            // 审核时间
 	Remark                   string  `gorm:"column:remark;size:1000;comment:备注" json:"remark"`                                                                                       // 备注
 	TransferVoucher          string  `gorm:"column:transfer_voucher;size:255;comment:转账凭证" json:"transfer_voucher"`                                                                  // 转账凭证
-	RechargeInfo             string  `gorm:"column:recharge_info;type:jsonb;comment:充值信息" json:"recharge_info"`                                                                      // 充值信息
+	RechargeInfo             string  `gorm:"column:recharge_info;type:jsonb;default:'{}';comment:充值信息" json:"recharge_info"`                                                         // 充值信息
 	//
 	gormx.OperationBaseModel
 	gormx.Model

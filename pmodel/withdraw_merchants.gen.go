@@ -19,7 +19,7 @@ type WithdrawMerchant struct {
 	BalanceQueryURL       string `gorm:"column:balance_query_url;type:varchar(255);not null;comment:余额查询地址" json:"balance_query_url"`                 // 余额查询地址
 	SuccessTag            string `gorm:"column:success_tag;type:varchar(255);default:success;comment:提现成功标识(回调成功标识)" json:"success_tag"`              // 提现成功标识(回调成功标识)
 	CallbackAddress       string `gorm:"column:callback_address;type:varchar(255);comment:回调IP地址(多个用逗号分隔)" json:"callback_address"`                   // 回调IP地址(多个用逗号分隔)
-	WithdrawTypeIDs       string `gorm:"column:withdraw_type_ids;type:jsonb;comment:提现方式Id's" json:"withdraw_type_ids"`                               // 提现方式Id's
+	WithdrawTypeIDs       string `gorm:"column:withdraw_type_ids;type:jsonb;default:'{}';comment:提现方式Id's" json:"withdraw_type_ids"`                  // 提现方式Id's
 	LimitAmountLower      int64  `gorm:"column:limit_amount_lower;not null;comment:最低提现金额" json:"limit_amount_lower"`                                 // 最低提现金额
 	LimitAmountUpper      int64  `gorm:"column:limit_amount_upper;not null;comment:最高提现金额" json:"limit_amount_upper"`                                 // 最高提现金额
 	Status                int8   `gorm:"column:status;type:smallint;not null;comment:状态(1:启用,2:禁用)" json:"status"`                                    // 状态(1:启用,2:禁用)

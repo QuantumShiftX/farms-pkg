@@ -17,7 +17,7 @@ type UserRewardLog struct {
 	Source       string          `gorm:"type:varchar(100);index:idx_user_reward_logs_source;column:source" json:"source"`                              // 奖励来源
 	Description  string          `gorm:"type:text;column:description" json:"description"`                                                              // 奖励描述
 	CreatedAt    time.Time       `gorm:"not null;default:CURRENT_TIMESTAMP;index:idx_user_reward_logs_created_at;column:created_at" json:"created_at"` // 记录创建时间
-	Metadata     json.RawMessage `gorm:"type:jsonb;column:metadata" json:"metadata"`                                                                   // 额外属性 (JSON)
+	Metadata     json.RawMessage `gorm:"type:jsonb;default:'{}';column:metadata" json:"metadata"`                                                      // 额外属性 (JSON)
 }
 
 // TableName 设置表名

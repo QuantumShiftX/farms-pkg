@@ -12,6 +12,7 @@ type NotificationTranslation struct {
 	Title        string `gorm:"column:title;not null" json:"title"`                         // 通知标题
 	Content      string `gorm:"column:content;not null" json:"content"`                     // 通知内容
 	Remarks      string `gorm:"column:remarks" json:"remarks"`                              // 备注，描述模板的用途或说明
+	Status       int64  `gorm:"column:status;comment:状态" json:"status"`                     //
 	//
 	gormx.OperationBaseModel
 	gormx.Model

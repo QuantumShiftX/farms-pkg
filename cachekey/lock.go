@@ -10,6 +10,8 @@ const (
 	LockUserFarmsOpsTimeExpire = 10 * time.Second
 	// 	LockUserFarmsOpsKey 用户操作农场锁key {user_id} {ops_farm_id}
 	LockUserFarmsOpsKey = "{lock}:user_%d_ops_farms_%d"
+	// 操作发财树
+	LockUserFarmsOpsFortuneTreeKey = "{lock}:user_%d_ops_fortune_tree_%d"
 )
 
 const (

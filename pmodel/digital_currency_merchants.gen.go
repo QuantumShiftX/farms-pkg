@@ -13,8 +13,9 @@ type DigitalCurrencyMerchant struct {
 	PurchaseAmount     int64  `gorm:"column:purchase_amount;type:int8;not null;default:0" json:"purchase_amount"`           // 已收购金额(代币)
 	OrderAmount        int64  `gorm:"column:order_amount;type:int8;not null;default:0" json:"order_amount"`                 // 已订购金额(USDT)
 	Balance            int64  `gorm:"column:balance;type:int8;not null;default:0" json:"balance"`                           // 库存余额(USDT)
-	IsUnlimitedBalance int16  `gorm:"column:is_unlimited_balance;type:int2;not null;default:2" json:"is_unlimited_balance"` // 是否无限库存余额 1 是，2：否
-	IsOnline           int16  `gorm:"column:is_online;type:int2;not null;default:1" json:"is_online"`                       // 是否上架 1开启上架，2：下架
+	Sort               int64  `gorm:"column:sort;type:int8;not null;default:0" json:"sort"`                                 // 排序
+	IsUnlimitedBalance int8   `gorm:"column:is_unlimited_balance;type:int2;not null;default:2" json:"is_unlimited_balance"` // 是否无限库存余额 1 是，2：否
+	IsOnline           int8   `gorm:"column:is_online;type:int2;not null;default:1" json:"is_online"`                       // 是否上架 1开启上架，2：下架
 	//
 	gormx.OperationBaseModel
 	gormx.Model

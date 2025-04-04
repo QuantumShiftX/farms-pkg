@@ -15,10 +15,11 @@ func (t SettingsConfCategory) Str() string {
 type SettingsConfKey string
 
 const (
-	BasicSettingsKeyConf          SettingsConfKey = "basic_settings"
-	AgentRebateRulesKeyConf       SettingsConfKey = "rebate_rules"
-	AgreementUserAgreementKeyConf SettingsConfKey = "user_agreement"
-	AgreementPrivacyPolicyKeyConf SettingsConfKey = "privacy_policy"
+	BasicSettingsKeyConf            SettingsConfKey = "basic_settings"
+	AgentRebateRulesKeyConf         SettingsConfKey = "rebate_rules"
+	AgreementUserAgreementKeyConf   SettingsConfKey = "user_agreement"
+	AgreementPrivacyPolicyKeyConf   SettingsConfKey = "privacy_policy"
+	AgreementCustomerServiceKeyConf SettingsConfKey = "customer_service"
 )
 
 func (t SettingsConfKey) Str() string {

@@ -12,13 +12,19 @@ const (
 
 const (
 	// CacheOnlineUsersKey 在线用户key
-	CacheOnlineUsersKey    = "{cache}:online:users"   // {cache}:online:users
-	CacheUserOnlineInfoKey = "{cache}:user:online:%d" // {cache}:user:online:{user_id}
+	CacheOnlineUsersKey    = "{cache_user}:online:users" // {cache}:online:users
+	CacheUserOnlineInfoKey = "{cache_user}:online:%d"    // {cache}:user:online:{user_id}
 
 )
 
 const (
 	// CacheUserSendCaptchaInfoKey 用户发送验证码
 	CacheUserSendCaptchaInfoKey = "{cache}:user:captcha:%s" // {cache}:user:online:{account}
+
+)
+
+const (
+	// MerchantExchangeRateInfoKey 用户转换金额缓存
+	MerchantExchangeRateInfoKey = "{cache_user_%d}:exchange_%d:ustd" // {user_id}{user_icon}
 
 )

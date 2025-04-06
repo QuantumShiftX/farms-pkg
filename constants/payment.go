@@ -73,3 +73,77 @@ const (
 func (t AccountType) Int8() int8 {
 	return int8(t)
 }
+
+// OrderStatus 定义订单状态的枚举类型
+type OrderStatus int
+
+// 定义订单状态的枚举值
+const (
+	OrderStatusProcessing OrderStatus = iota + 1 // 1 - 处理中
+	OrderStatusSuccess                           // 2 - 处理成功
+	OrderStatusFailed                            // 3 - 处理失败
+)
+
+func (s OrderStatus) Int64() int64 {
+	return int64(s)
+}
+
+// String 方法，返回订单状态的中文描述
+func (s OrderStatus) String() string {
+	switch s {
+	case OrderStatusProcessing:
+		return "处理中"
+	case OrderStatusSuccess:
+		return "处理成功"
+	case OrderStatusFailed:
+		return "处理失败"
+	default:
+		return "未知状态"
+	}
+}
+
+// DepositOrderStatus 定义充值订单状态的枚举类型
+type DepositOrderStatus int
+
+// 定义充值订单状态的枚举值
+const (
+	DepositOrderStatusPending           DepositOrderStatus = iota + 1 // 1 - 待出款
+	DepositOrderStatusPendingUnlocked                                 // 2 - 待出款（未锁定）
+	DepositOrderStatusPendingLocked                                   // 3 - 待出款（已锁定）
+	DepositOrderStatusPendingThirdParty                               // 4 - 待三方付款
+	DepositOrderStatusPaymentFailed                                   // 5 - 付款失败
+	DepositOrderStatusRejected                                        // 6 - 已拒绝
+	DepositOrderStatusCancelled                                       // 7 - 已取消
+	DepositOrderStatusPaid                                            // 8 - 已付款
+	DepositOrderStatusForcePaid                                       // 9 - 已强制付款
+)
+
+func (s DepositOrderStatus) Int64() int64 {
+	return int64(s)
+}
+
+// String 方法，返回充值订单状态的中文描述
+func (s DepositOrderStatus) String() string {
+	switch s {
+	case DepositOrderStatusPending:
+		return "待出款"
+	case DepositOrderStatusPendingUnlocked:
+		return "待出款（未锁定）"
+	case DepositOrderStatusPendingLocked:
+		return "待出款（已锁定）"
+	case DepositOrderStatusPendingThirdParty:
+		return "待三方付款"
+	case DepositOrderStatusPaymentFailed:
+		return "付款失败"
+	case DepositOrderStatusRejected:
+		return "已拒绝"
+	case DepositOrderStatusCancelled:
+		return "已取消"
+	case DepositOrderStatusPaid:
+		return "已付款"
+	case DepositOrderStatusForcePaid:
+		return "已强制付款"
+	default:
+		return "未知状态"
+	}
+}

@@ -43,6 +43,10 @@ const (
 	FarmOperationTypeWater
 	// FarmOperationTypeFertilizer 施肥
 	FarmOperationTypeFertilizer
+	// FarmOperationTypeHarvest 收获
+	FarmOperationTypeHarvest
+	// FarmOperationTypePlanting 种植
+	FarmOperationTypePlanting
 )
 
 func (t FarmOperationType) Int64() int64 {
@@ -56,6 +60,10 @@ func (t FarmOperationType) String() string {
 		return "water"
 	case FarmOperationTypeFertilizer:
 		return "fertilize"
+	case FarmOperationTypeHarvest:
+		return "harvest"
+	case FarmOperationTypePlanting:
+		return "planting"
 	default:
 		return "unknown"
 	}

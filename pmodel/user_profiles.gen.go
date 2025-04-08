@@ -19,14 +19,15 @@ type UserProfile struct {
 	Realname       string    `gorm:"column:realname;not null;comment:真实姓名" json:"realname"`                                          // 真实姓名
 	Nickname       string    `gorm:"column:nickname;not null;comment:昵称" json:"nickname"`                                            // 昵称
 	Avatar         string    `gorm:"column:avatar;not null;comment:头像" json:"avatar"`                                                // 头像
-	Gender         int8     `gorm:"column:gender;not null;default:3;comment:性别：1-男；2-女；3-未知" json:"gender"`                         // 性别：1-男；2-女；3-未知
+	Gender         int8      `gorm:"column:gender;not null;default:3;comment:性别：1-男；2-女；3-未知" json:"gender"`                         // 性别：1-男；2-女；3-未知
 	Birthday       time.Time `gorm:"column:birthday;comment:出生日期" json:"birthday"`                                                   // 出生日期
 	Phone          string    `gorm:"column:phone;not null;comment:手机号" json:"phone"`                                                 // 手机号
 	Email          string    `gorm:"column:email;not null;comment:邮箱" json:"email"`                                                  // 邮箱
 	GauthPass      string    `gorm:"column:gauth_pass;not null;comment:谷歌验证" json:"gauth_pass"`                                      // 谷歌验证
 	Question       string    `gorm:"column:question;not null;comment:密保问题" json:"question"`                                          // 密保问题
 	GauthSecret    string    `gorm:"column:gauth_secret;not null;comment:谷歌验证密钥" json:"gauth_secret"`                                // 谷歌验证密钥
-	GauthStatus    int8     `gorm:"column:gauth_status;not null;default:2;comment:谷歌验证启用状态：1-启用；2-禁用" json:"gauth_status"`          // 谷歌验证启用状态：1-启用；2-禁用
+	GauthStatus    int8      `gorm:"column:gauth_status;not null;default:2;comment:谷歌验证启用状态：1-启用；2-禁用" json:"gauth_status"`          // 谷歌验证启用状态：1-启用；2-禁用
+	Experience     int64     `gorm:"column:experience;not null;default:0;comment:用户当前经验值" json:"experience"`                         // 用户当前经验值
 	//
 	gormx.Model
 }

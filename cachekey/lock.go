@@ -26,3 +26,11 @@ const (
 	// LockUserRechargeNoticeKey 用户充值回调锁:订单ID 充值金额
 	LockUserRechargeNoticeKey = "{lock:order_%s}:recharge_%d"
 )
+
+const (
+	LockASyncStatusTimeExpire = 10 * time.Second
+	// LockUserCropStatusCheckKey 用户作物状态锁:用户id
+	LockUserCropStatusCheckKey = "{lock:user_%d}:crop_status_check"
+	// LockUserTreeStatusCheckKey 用户发财树状态锁:用户id
+	LockUserTreeStatusCheckKey = "{lock:user_%d}:tree_status_check"
+)

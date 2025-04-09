@@ -7,6 +7,12 @@ const (
 )
 
 const (
+	LockUserWalletTypeChangeTimeExpire = 5 * time.Second
+	// 	LockUserFarmsOpsKey 用户操作农场锁key {user_id} {wallet type}
+	LockUserWalletTypeChangeKey = "{lock_user_%d}:ops:balance_%d"
+)
+
+const (
 	LockUserFarmsOpsTimeExpire = 10 * time.Second
 	// 	LockUserFarmsOpsKey 用户操作农场锁key {user_id} {ops_farm_id}
 	LockUserFarmsOpsKey = "{lock}:user_%d_ops_farms_%d"

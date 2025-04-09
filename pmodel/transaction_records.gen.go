@@ -15,7 +15,6 @@ type TransactionRecord struct {
 	BalancePrevious int64  `gorm:"column:balance_previous;not null"`                             // 变动前余额, 单位:微
 	Amount          int64  `gorm:"column:amount;not null"`                                       // 变动金额, 单位:微
 	BalanceAfter    int64  `gorm:"column:balance_after;not null"`                                // 变动后余额, 单位:微
-	TransactionType int16  `gorm:"column:transaction_type;not null"`                             // 交易类型
 	Remark          string `gorm:"column:remark"`                                                // 备注信息
 	TransactionTime int64  `gorm:"column:transaction_time;not null"`                             // 交易时间
 	RelatedID       int64  `gorm:"column:related_id;default:0"`                                  // 关联ID，如游戏ID，商品ID，活动ID

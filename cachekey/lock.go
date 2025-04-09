@@ -14,6 +14,13 @@ const (
 	UserBalanceLogUniqueKey = "user_balance_log_unique:%s_%d"
 )
 
+// 用户余额变动响应code 0失败 1 成功 2余额不足
+const (
+	UserBalanceChangeRespCodeFailed           = 0
+	UserBalanceChangeRespCodeSuccess          = 1
+	UserBalanceChangeRespCodeNotEnoughBalance = 2
+)
+
 const (
 	LockUserFarmsOpsTimeExpire = 10 * time.Second
 	// 	LockUserFarmsOpsKey 用户操作农场锁key {user_id} {ops_farm_id}

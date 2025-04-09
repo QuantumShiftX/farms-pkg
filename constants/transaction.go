@@ -15,6 +15,10 @@ const (
 	TxnFundCorrection                              // 9: 资金修正
 )
 
+func (o TxnCategoryType) Int64() int64 {
+	return int64(o)
+}
+
 // 定义枚举类型的字符串映射
 func (o TxnCategoryType) String() string {
 	switch o {
@@ -53,3 +57,7 @@ const (
 	TxnSubReward                                         // 6: 返佣
 	TxnSubHarvest                                        // 7: 返佣
 )
+
+func (o TxnSubCategoryType) Int64() int64 {
+	return int64(o)
+}

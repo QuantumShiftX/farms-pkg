@@ -54,8 +54,8 @@ const (
 	TxnSubPurchase                                       // 3: 购买
 	TxnSubCurrencyExchange                               // 4: 换汇
 	TxnSubRebate                                         // 5: 返佣
-	TxnSubReward                                         // 6: 返佣
-	TxnSubHarvest                                        // 7: 返佣
+	TxnSubReward                                         // 6: 奖励
+	TxnSubHarvest                                        // 7: 收获
 )
 
 func (o TxnSubCategoryType) Int64() int64 {

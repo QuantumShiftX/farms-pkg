@@ -17,7 +17,7 @@ type TransactionRecord struct {
 	BalanceAfter    int64  `gorm:"column:balance_after;not null"`                                // 变动后余额, 单位:微
 	Remark          string `gorm:"column:remark"`                                                // 备注信息
 	TransactionTime int64  `gorm:"column:transaction_time;not null"`                             // 交易时间
-	RelatedID       int64  `gorm:"column:related_id;default:0"`                                  // 关联ID，如游戏ID，商品ID，活动ID
+	RelatedID       string `gorm:"column:related_id;not null"`                                   // 关联ID，如游戏ID，商品ID，活动ID
 	MsgID           string `gorm:"column:msg_id"`                                                // 消息队列消息ID
 	CreatedAt       int64  `gorm:"column:created_at;not null;default:EXTRACT(epoch FROM now())"` // 创建时间
 	UpdatedAt       int64  `gorm:"column:updated_at;not null;default:EXTRACT(epoch FROM now())"` // 更新时间

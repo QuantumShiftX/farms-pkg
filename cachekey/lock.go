@@ -12,6 +12,8 @@ const (
 	LockUserWalletTypeChangeKey = "{lock_user_%d}:ops:balance_%d"
 	// UserBalanceLogUniqueKey 唯一检查
 	UserBalanceLogUniqueKey = "user_balance_log_unique:%s_%d"
+	// CacheUserBalanceUserInfoKey 缓存余额变动所需用户信息
+	CacheUserBalanceUserInfoKey = "cache_balance_log_user_info:%d"
 )
 
 // 用户余额变动响应code 0失败 1 成功 2余额不足

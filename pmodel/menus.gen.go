@@ -10,18 +10,21 @@ const TableNameMenu = "menus"
 
 // Menu mapped from table <menus>
 type Menu struct {
-	ID             int64  `gorm:"column:id;primaryKey;autoIncrement:true;comment:主键" json:"id"`              // 主键
-	Title          string `gorm:"column:title;not null;comment:名称" json:"title"`                             // 名称
-	ParentID       int64  `gorm:"column:parent_id;not null;comment:上级菜单" json:"parent_id"`                   // 上级菜单
-	Path           string `gorm:"column:path;not null;comment:路由" json:"path"`                               // 路由
-	Redirect       string `gorm:"column:redirect;not null;comment:重定向" json:"redirect"`                      // 重定向
-	Identification string `gorm:"column:identification;not null;comment:唯一标识" json:"identification"`         // 唯一标识
-	Icon           string `gorm:"column:icon;not null;comment:图标" json:"icon"`                               // 图标
-	Type           int64  `gorm:"column:type;not null;comment:类型：1-菜单,2-按钮" json:"type"`                          // 类型：1-菜单
-	Component      string `gorm:"column:component;not null;comment:组件" json:"component"`                     // 组件
-	Status         int64  `gorm:"column:status;not null;default:1;comment:状态：1-正常,2-禁用" json:"status"`            // 状态：1-正常
-	Sort           int64  `gorm:"column:sort;not null;comment:排序字段" json:"sort"`                             // 排序字段
-	APIPath        string `gorm:"column:api_path;not null;comment:API路径" json:"api_path"`                    // API路径
+	ID                 int64  `gorm:"column:id;primaryKey;autoIncrement:true;comment:主键ID" json:"id"`                                // 主键ID
+	ParentID           int64  `gorm:"column:parent_id;index:idx_menus_parent_id,priority:1;comment:父级菜单ID" json:"parent_id"`         // 父级菜单ID
+	Name               string `gorm:"column:name;not null;uniqueIndex:idx_menus_name,priority:2;comment:菜单唯一标识(用于前端路由)" json:"name"` // 菜单唯一标识(用于前端路由)
+	Title              string `gorm:"column:title;not null;comment:菜单名称(显示在界面上的名称)" json:"title"`                                    // 菜单名称(显示在界面上的名称)
+	Icon               string `gorm:"column:icon;comment:菜单图标" json:"icon"`                                                          // 菜单图标
+	Path               string `gorm:"column:path;comment:路由路径" json:"path"`                                                          // 路由路径
+	Component          string `gorm:"column:component;comment:组件路径" json:"component"`                                                // 组件路径
+	Redirect           string `gorm:"column:redirect;comment:重定向路径" json:"redirect"`                                                 // 重定向路径
+	Type               int16  `gorm:"column:type;not null;comment:类型: 1-目录, 2-菜单, 3-按钮" json:"type"`                                 // 类型: 1-目录, 2-菜单, 3-按钮
+	Permission         string `gorm:"column:permission;comment:权限标识(用于后端API权限验证)" json:"permission"`                                 // 权限标识(用于后端API权限验证)
+	Hidden             int16  `gorm:"column:hidden;comment:是否在菜单中隐藏" json:"hidden"`                                                  // 是否在菜单中隐藏  1-是, 2-否
+	HideChildrenInMenu int16  `gorm:"column:hide_children_in_menu;comment:是否隐藏子菜单" json:"hide_children_in_menu"`                     // 是否隐藏子菜单  1-是, 2-否
+	Status             int16  `gorm:"column:status;default:1;comment:状态: 1-启用, 2-禁用" json:"status"`                                  // 状态: 1-启用, 2-禁用
+	Sort               int32  `gorm:"column:sort;comment:排序" json:"sort"`                                                            // 排序
+	Meta               string `gorm:"column:meta;default:{};comment:路由元数据, 用于存储额外的路由配置" json:"meta"`                                 // 路由元数据, 用于存储额外的路由配置
 	//
 	gormx.OperationBaseModel
 	gormx.Model

@@ -19,10 +19,10 @@ type Role struct {
 	Authority            string `gorm:"column:authority;not null;uniqueIndex:idx_roles_authority,priority:1;comment:前端路由权限标识" json:"authority"`      // 前端路由权限标识
 	MenuIDs              datatypes.JSONSlice[int64] `gorm:"column:menu_ids;default:[];comment:菜单ID数组，用于存储该角色可访问的菜单项" json:"menu_ids"`                                    // 菜单ID数组，用于存储该角色可访问的菜单项
 	PermissionIDs        datatypes.JSONSlice[int64] `gorm:"column:permission_ids;default:[];comment:权限ID数组，用于存储该角色拥有的权限" json:"permission_ids"`                          // 权限ID数组，用于存储该角色拥有的权限
-	DataScope            int16  `gorm:"column:data_scope;default:1;comment:数据范围: 1-全部数据, 2-本部门数据, 3-本部门及下级部门数据, 4-仅本人数据, 5-自定义数据" json:"data_scope"` // 数据范围: 1-全部数据, 2-本部门数据, 3-本部门及下级部门数据, 4-仅本人数据, 5-自定义数据
+	DataScope            int64  `gorm:"column:data_scope;default:1;comment:数据范围: 1-全部数据, 2-本部门数据, 3-本部门及下级部门数据, 4-仅本人数据, 5-自定义数据" json:"data_scope"` // 数据范围: 1-全部数据, 2-本部门数据, 3-本部门及下级部门数据, 4-仅本人数据, 5-自定义数据
 	DataScopeCustomDepts datatypes.JSONSlice[int64] `gorm:"column:data_scope_custom_depts;default:[];comment:自定义数据范围部门ID数组" json:"data_scope_custom_depts"`              // 自定义数据范围部门ID数组
-	Sort                 int32  `gorm:"column:sort;comment:排序" json:"sort"`                                                                          // 排序
-	Status               int16  `gorm:"column:status;default:1;comment:状态: 1-启用, 2-禁用" json:"status"`                                                // 状态: 1-启用, 2-禁用
+	Sort                 int64  `gorm:"column:sort;comment:排序" json:"sort"`                                                                          // 排序
+	Status               int64  `gorm:"column:status;default:1;comment:状态: 1-启用, 2-禁用" json:"status"`                                                // 状态: 1-启用, 2-禁用
 	Remark               string `gorm:"column:remark;comment:备注" json:"remark"`                                                                      // 备注
 	//
 	gormx.OperationBaseModel

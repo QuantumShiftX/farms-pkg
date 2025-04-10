@@ -17,13 +17,13 @@ type Admin struct {
 	Avatar           string `gorm:"column:avatar;comment:头像" json:"avatar"`                                                               // 头像
 	Email            string `gorm:"column:email;comment:邮箱" json:"email"`                                                                 // 邮箱
 	Phone            string `gorm:"column:phone;comment:手机号" json:"phone"`                                                                // 手机号
-	DepartmentID     int32  `gorm:"column:department_id;comment:部门ID" json:"department_id"`                                               // 部门ID
+	DepartmentID     int64  `gorm:"column:department_id;comment:部门ID" json:"department_id"`                                               // 部门ID
 	RoleID           int64  `gorm:"column:role_id;comment:角色ID" json:"role_id"`                                                           // 角色ID
 	LastLoginTime    int64  `gorm:"column:last_login_time;comment:最后登录时间" json:"last_login_time"`                                         // 最后登录时间
 	LastLoginIP      string `gorm:"column:last_login_ip;comment:最后登录IP" json:"last_login_ip"`                                             // 最后登录IP
 	LoginCount       int64  `gorm:"column:login_count;comment:登录次数" json:"login_count"`                                                   // 登录次数
 	Status           int16  `gorm:"column:status;default:1;comment:状态: 1-启用, 2-禁用" json:"status"`                                         // 状态: 1-启用, 2-禁用
-	GoogleAuthStatus int16  `gorm:"column:google_auth_status;default:2;comment:Google验证状态: 1-启用, 2-禁用" json:"google_auth_status"`         // Google验证状态: 1-启用, 2-禁用
+	GoogleAuthStatus int64  `gorm:"column:google_auth_status;default:2;comment:Google验证状态: 1-启用, 2-禁用" json:"google_auth_status"`         // Google验证状态: 1-启用, 2-禁用
 	GoogleAuthSecret string `gorm:"column:google_auth_secret;default:''::character varying;comment:Google验证密钥" json:"google_auth_secret"` // Google验证密钥
 	Remark           string `gorm:"column:remark;comment:备注" json:"remark"`                                                               // 备注
 	//

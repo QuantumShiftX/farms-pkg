@@ -14,9 +14,9 @@ type Permission struct {
 	MenuID        int64  `gorm:"column:menu_id;index:idx_permissions_menu_id,priority:1;comment:关联的菜单ID" json:"menu_id"`          // 关联的菜单ID
 	Name          string `gorm:"column:name;not null;comment:权限名称" json:"name"`                                                   // 权限名称
 	Code          string `gorm:"column:code;not null;uniqueIndex:idx_permissions_code,priority:1;comment:权限编码(前端使用)" json:"code"` // 权限编码(前端使用)
-	Type          int16  `gorm:"column:type;default:1;comment:权限类型: 1-功能权限, 2-数据权限" json:"type"`                                  // 权限类型: 1-功能权限, 2-数据权限
+	Type          int64  `gorm:"column:type;default:1;comment:权限类型: 1-功能权限, 2-数据权限" json:"type"`                                  // 权限类型: 1-功能权限, 2-数据权限
 	Action        string `gorm:"column:action;comment:操作类型(CRUD: create, read, update, delete)" json:"action"`                    // 操作类型(CRUD: create, read, update, delete)
-	Status        int16  `gorm:"column:status;default:1;comment:状态: 1-启用, 2-禁用" json:"status"`                                    // 状态: 1-启用, 2-禁用
+	Status        int64  `gorm:"column:status;default:1;comment:状态: 1-启用, 2-禁用" json:"status"`                                    // 状态: 1-启用, 2-禁用
 	Description   string `gorm:"column:description;comment:权限描述" json:"description"`                                              // 权限描述
 	//
 	gormx.OperationBaseModel

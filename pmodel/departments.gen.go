@@ -17,8 +17,8 @@ type Department struct {
 	Leader        string `gorm:"column:leader;comment:部门负责人" json:"leader"`                                                   // 部门负责人
 	Phone         string `gorm:"column:phone;comment:联系电话" json:"phone"`                                                      // 联系电话
 	Email         string `gorm:"column:email;comment:邮箱" json:"email"`                                                        // 邮箱
-	Sort          int32  `gorm:"column:sort;comment:排序" json:"sort"`                                                          // 排序
-	Status        int16  `gorm:"column:status;default:1;comment:状态: 1-启用, 2-禁用" json:"status"`                                // 状态: 1-启用, 2-禁用
+	Sort          int64  `gorm:"column:sort;comment:排序" json:"sort"`                                                          // 排序
+	Status        int64  `gorm:"column:status;default:1;comment:状态: 1-启用, 2-禁用" json:"status"`                                // 状态: 1-启用, 2-禁用
 	Remark        string `gorm:"column:remark;comment:备注" json:"remark"`                                                      // 备注
 	//
 	gormx.OperationBaseModel

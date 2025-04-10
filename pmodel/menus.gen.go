@@ -18,12 +18,12 @@ type Menu struct {
 	Path               string `gorm:"column:path;comment:路由路径" json:"path"`                                                          // 路由路径
 	Component          string `gorm:"column:component;comment:组件路径" json:"component"`                                                // 组件路径
 	Redirect           string `gorm:"column:redirect;comment:重定向路径" json:"redirect"`                                                 // 重定向路径
-	Type               int16  `gorm:"column:type;not null;comment:类型: 1-目录, 2-菜单, 3-按钮" json:"type"`                                 // 类型: 1-目录, 2-菜单, 3-按钮
+	Type               int64  `gorm:"column:type;not null;comment:类型: 1-目录, 2-菜单, 3-按钮" json:"type"`                                 // 类型: 1-目录, 2-菜单, 3-按钮
 	Permission         string `gorm:"column:permission;comment:权限标识(用于后端API权限验证)" json:"permission"`                                 // 权限标识(用于后端API权限验证)
-	Hidden             int16  `gorm:"column:hidden;comment:是否在菜单中隐藏" json:"hidden"`                                                  // 是否在菜单中隐藏  1-是, 2-否
-	HideChildrenInMenu int16  `gorm:"column:hide_children_in_menu;comment:是否隐藏子菜单" json:"hide_children_in_menu"`                     // 是否隐藏子菜单  1-是, 2-否
-	Status             int16  `gorm:"column:status;default:1;comment:状态: 1-启用, 2-禁用" json:"status"`                                  // 状态: 1-启用, 2-禁用
-	Sort               int32  `gorm:"column:sort;comment:排序" json:"sort"`                                                            // 排序
+	Hidden             int64  `gorm:"column:hidden;comment:是否在菜单中隐藏" json:"hidden"`                                                  // 是否在菜单中隐藏  1-是, 2-否
+	HideChildrenInMenu int64  `gorm:"column:hide_children_in_menu;comment:是否隐藏子菜单" json:"hide_children_in_menu"`                     // 是否隐藏子菜单  1-是, 2-否
+	Status             int64  `gorm:"column:status;default:1;comment:状态: 1-启用, 2-禁用" json:"status"`                                  // 状态: 1-启用, 2-禁用
+	Sort               int64  `gorm:"column:sort;comment:排序" json:"sort"`                                                            // 排序
 	Meta               string `gorm:"column:meta;default:{};comment:路由元数据, 用于存储额外的路由配置" json:"meta"`                                 // 路由元数据, 用于存储额外的路由配置
 	//
 	gormx.OperationBaseModel

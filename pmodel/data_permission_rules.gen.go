@@ -14,10 +14,10 @@ type DataPermissionRule struct {
 	Name           string `gorm:"column:name;not null;comment:规则名称" json:"name"`                                                                                                                 // 规则名称
 	TableName_     string `gorm:"column:table_name;not null;index:idx_data_permission_rules_table_name,priority:1;comment:数据表名" json:"table_name"`                                               // 数据表名
 	ColumnName     string `gorm:"column:column_name;not null;comment:列名" json:"column_name"`                                                                                                     // 列名
-	ConditionType  int16  `gorm:"column:condition_type;default:1;comment:条件类型: 1-等于, 2-不等于, 3-大于, 4-大于等于, 5-小于, 6-小于等于, 7-包含, 8-不包含, 9-为空, 10-不为空, 11-在...之中, 12-不在...之中" json:"condition_type"` // 条件类型: 1-等于, 2-不等于, 3-大于, 4-大于等于, 5-小于, 6-小于等于, 7-包含, 8-不包含, 9-为空, 10-不为空, 11-在...之中, 12-不在...之中
+	ConditionType  int64  `gorm:"column:condition_type;default:1;comment:条件类型: 1-等于, 2-不等于, 3-大于, 4-大于等于, 5-小于, 6-小于等于, 7-包含, 8-不包含, 9-为空, 10-不为空, 11-在...之中, 12-不在...之中" json:"condition_type"` // 条件类型: 1-等于, 2-不等于, 3-大于, 4-大于等于, 5-小于, 6-小于等于, 7-包含, 8-不包含, 9-为空, 10-不为空, 11-在...之中, 12-不在...之中
 	ConditionValue string `gorm:"column:condition_value;comment:条件值" json:"condition_value"`                                                                                                     // 条件值
 	RoleID         int64  `gorm:"column:role_id;index:idx_data_permission_rules_role_id,priority:1;comment:角色ID" json:"role_id"`                                                                 // 角色ID
-	Status         int16  `gorm:"column:status;default:1;comment:状态: 1-启用, 2-禁用" json:"status"`                                                                                                  // 状态: 1-启用, 2-禁用
+	Status         int64  `gorm:"column:status;default:1;comment:状态: 1-启用, 2-禁用" json:"status"`                                                                                                  // 状态: 1-启用, 2-禁用
 	Remark         string `gorm:"column:remark;comment:备注" json:"remark"`                                                                                                                        //
 	gormx.OperationBaseModel
 	gormx.Model // 备注

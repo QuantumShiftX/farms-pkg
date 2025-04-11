@@ -4,30 +4,27 @@
 
 package pmodel
 
-import (
-	"github.com/QuantumShiftX/golib/stores/gormx"
-	"gorm.io/datatypes"
-)
+import "github.com/QuantumShiftX/golib/stores/gormx"
 
 const TableNameMenu = "menus"
 
 // Menu mapped from table <menus>
 type Menu struct {
-	ID                 int64          `gorm:"column:id;primaryKey;autoIncrement:true;comment:主键ID" json:"id"`                                // 主键ID
-	ParentID           int64          `gorm:"column:parent_id;index:idx_menus_parent_id,priority:1;comment:父级菜单ID" json:"parent_id"`         // 父级菜单ID
-	Name               string         `gorm:"column:name;not null;uniqueIndex:idx_menus_name,priority:2;comment:菜单唯一标识(用于前端路由)" json:"name"` // 菜单唯一标识(用于前端路由)
-	Title              string         `gorm:"column:title;not null;comment:菜单名称(显示在界面上的名称)" json:"title"`                                    // 菜单名称(显示在界面上的名称)
-	Icon               string         `gorm:"column:icon;comment:菜单图标" json:"icon"`                                                          // 菜单图标
-	Path               string         `gorm:"column:path;comment:路由路径" json:"path"`                                                          // 路由路径
-	Component          string         `gorm:"column:component;comment:组件路径" json:"component"`                                                // 组件路径
-	Redirect           string         `gorm:"column:redirect;comment:重定向路径" json:"redirect"`                                                 // 重定向路径
-	Type               int64          `gorm:"column:type;not null;comment:类型: 1-目录, 2-菜单, 3-按钮" json:"type"`                                 // 类型: 1-目录, 2-菜单, 3-按钮
-	Permission         string         `gorm:"column:permission;comment:权限标识(用于后端API权限验证)" json:"permission"`                                 // 权限标识(用于后端API权限验证)
-	Hidden             int64          `gorm:"column:hidden;comment:是否在菜单中隐藏" json:"hidden"`                                                  // 是否在菜单中隐藏  1-是, 2-否
-	HideChildrenInMenu int64          `gorm:"column:hide_children_in_menu;comment:是否隐藏子菜单" json:"hide_children_in_menu"`                     // 是否隐藏子菜单  1-是, 2-否
-	Status             int64          `gorm:"column:status;default:1;comment:状态: 1-启用, 2-禁用" json:"status"`                                  // 状态: 1-启用, 2-禁用
-	Sort               int64          `gorm:"column:sort;comment:排序" json:"sort"`                                                            // 排序
-	Meta               datatypes.JSON `gorm:"column:meta;default:{};comment:路由元数据, 用于存储额外的路由配置" json:"meta"`                                 // 路由元数据, 用于存储额外的路由配置
+	ID                 int64  `gorm:"column:id;primaryKey;autoIncrement:true;comment:主键ID" json:"id"`                                // 主键ID
+	ParentID           int64  `gorm:"column:parent_id;index:idx_menus_parent_id,priority:1;comment:父级菜单ID" json:"parent_id"`         // 父级菜单ID
+	Name               string `gorm:"column:name;not null;uniqueIndex:idx_menus_name,priority:2;comment:菜单唯一标识(用于前端路由)" json:"name"` // 菜单唯一标识(用于前端路由)
+	Title              string `gorm:"column:title;not null;comment:菜单名称(显示在界面上的名称)" json:"title"`                                    // 菜单名称(显示在界面上的名称)
+	Icon               string `gorm:"column:icon;comment:菜单图标" json:"icon"`                                                          // 菜单图标
+	Path               string `gorm:"column:path;comment:路由路径" json:"path"`                                                          // 路由路径
+	Component          string `gorm:"column:component;comment:组件路径" json:"component"`                                                // 组件路径
+	Redirect           string `gorm:"column:redirect;comment:重定向路径" json:"redirect"`                                                 // 重定向路径
+	Type               int64  `gorm:"column:type;not null;comment:类型: 1-目录, 2-菜单, 3-按钮" json:"type"`                                 // 类型: 1-目录, 2-菜单, 3-按钮
+	Permission         string `gorm:"column:permission;comment:权限标识(用于后端API权限验证)" json:"permission"`                                 // 权限标识(用于后端API权限验证)
+	Hidden             int64  `gorm:"column:hidden;comment:是否在菜单中隐藏" json:"hidden"`                                                  // 是否在菜单中隐藏  1-是, 2-否
+	HideChildrenInMenu int64  `gorm:"column:hide_children_in_menu;comment:是否隐藏子菜单" json:"hide_children_in_menu"`                     // 是否隐藏子菜单  1-是, 2-否
+	Status             int64  `gorm:"column:status;default:1;comment:状态: 1-启用, 2-禁用" json:"status"`                                  // 状态: 1-启用, 2-禁用
+	Sort               int64  `gorm:"column:sort;comment:排序" json:"sort"`                                                            // 排序
+	Meta               string `gorm:"column:meta;default:{};comment:路由元数据, 用于存储额外的路由配置" json:"meta"`                                 // 路由元数据, 用于存储额外的路由配置
 	//
 	gormx.OperationBaseModel
 	gormx.Model

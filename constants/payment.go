@@ -19,6 +19,23 @@ func (t RechargeOrderStatusType) Int8() int8 {
 	return int8(t)
 }
 
+// RechargeOrderStatus 根据原始的订单状态返回合并后的状态
+func (t RechargeOrderStatusType) RechargeOrderStatus() OrderStatus {
+	switch t {
+	case RechargeOrderStatusTypePayWaiting, RechargeOrderStatusTypeExamineRepair, RechargeOrderStatusTypeExamineAgain, RechargeOrderStatusTypeExamineWaiting:
+		// 处理中: 待支付、补单审核中、二次审核中、待审核
+		return OrderStatusProcessing
+	case RechargeOrderStatusTypePaySuccess:
+		// 处理成功: 支付成功
+		return OrderStatusSuccess
+	case RechargeOrderStatusTypePayTimeout, RechargeOrderStatusTypePayFailed, RechargeOrderStatusTypeCancel:
+		// 处理失败: 支付超时、支付失败、已取消
+		return OrderStatusFailed
+	default:
+		return OrderStatusFailed // 未知状态
+	}
+}
+
 // RechargeOrderType 充值订单类型
 type RechargeOrderType int8
 
@@ -120,6 +137,24 @@ const (
 
 func (s DepositOrderStatus) Int64() int64 {
 	return int64(s)
+}
+
+// DepositOrderStatus 根据充值订单状态返回合并后的状态
+func (s DepositOrderStatus) DepositOrderStatus() OrderStatus {
+	switch s {
+	case DepositOrderStatusPending, DepositOrderStatusPendingUnlocked, DepositOrderStatusPendingLocked, DepositOrderStatusPendingThirdParty:
+		// 处理中：待出款、待三方付款、待锁定等
+		return OrderStatusProcessing
+	case DepositOrderStatusPaid, DepositOrderStatusForcePaid:
+		// 处理成功：已付款、已强制付款
+		return OrderStatusSuccess
+	case DepositOrderStatusPaymentFailed, DepositOrderStatusRejected, DepositOrderStatusCancelled:
+		// 处理失败：付款失败、已拒绝、已取消
+		return OrderStatusFailed
+	default:
+		// 未知状态（如果有其他状态可扩展）
+		return OrderStatusFailed
+	}
 }
 
 // String 方法，返回充值订单状态的中文描述

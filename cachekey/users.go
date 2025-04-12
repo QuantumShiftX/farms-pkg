@@ -28,3 +28,10 @@ const (
 	MerchantExchangeRateInfoKey = "{cache_user_%d}:exchange_%d:ustd" // {user_id}{user_icon}
 
 )
+
+// 常量定义 Redis 键
+const (
+	UserLoginDailyKey    = "{user_login_%d}:daily:%s" // 用户每日登录记录，{userId}:{date}
+	UserLoginStreakKey   = "{user_login_%d}:streak"   // 用户连续登录计数，{userId}
+	UserLoginLastDateKey = "{user_login_%d}:last"     // 用户最后登录日期，{userId}
+)

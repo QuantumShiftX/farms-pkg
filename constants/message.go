@@ -4,8 +4,12 @@ package constants
 type MessageType int64
 
 const (
-	UserNotificationInfoMsgType  MessageType = 800 // 用户通知结构---公告信息body
-	UserBalanceNoticeInfoMsgType MessageType = 801 // 用户通知结构---余额信息body
+	UserPersonalInfoNoticeMsgType   MessageType = 3   // 用户通知结构---用户个人信息变更
+	UserNotificationInfoMsgType     MessageType = 800 // 用户通知结构---公告信息body
+	UserBalanceNoticeInfoMsgType    MessageType = 801 // 用户通知结构---余额信息body
+	UserLandStatusNoticeInfoMsgType MessageType = 802 // 用户通知结构---用户土地变更相关
+	UserLandCropCanOpsMsgType       MessageType = 803 // 用户通知结构---用户土地可收获状态
+	UserFortuneTreeStatusMsgType    MessageType = 804 // 用户通知结构---用户发财树状态变更数据推送
 
 )
 

@@ -55,3 +55,8 @@ var ActionTypeDescriptions = map[ActionType]string{
 func (t ActionType) Int8() int8 {
 	return int8(t)
 }
+
+// IsValid 检查 ActionType 是否有效
+func (t ActionType) IsValid() bool {
+	return t >= Deposit && t <= OnlineDuration
+}

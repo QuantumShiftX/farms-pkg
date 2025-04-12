@@ -22,6 +22,7 @@ type User struct {
 	Remark           string `gorm:"column:remark;not null;comment:备注" json:"remark"`                                                                                              // 备注
 	Status           int8   `gorm:"column:status;not null;index:idx_users_status,priority:1;default:1;comment:用户状态：1-正常；2-手动冻结；3-异常冻结；4-禁止领取优惠；5-禁止提现；6-黑名单；7-停用；" json:"status"` // 用户状态：1-正常；2-手动冻结；3-异常冻结；4-禁止领取优惠；5-禁止提现；6-黑名单；7-停用；
 	LastLoginTime    int64  `gorm:"column:last_login_time;not null;index:idx_users_last_login_time,priority:1;comment:最后登录时间" json:"last_login_time"`                             // 最后登录时间
+	TotalGrowth      int64  `gorm:"column:total_growth;not null;default:0;comment:用户当前经验值（总成长值）" json:"total_growth"`                                                             // 用户当前经验值（总成长值）
 	//
 	gormx.Model
 }

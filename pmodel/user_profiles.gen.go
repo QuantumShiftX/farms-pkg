@@ -27,7 +27,6 @@ type UserProfile struct {
 	Question       string    `gorm:"column:question;not null;comment:密保问题" json:"question"`                                          // 密保问题
 	GauthSecret    string    `gorm:"column:gauth_secret;not null;comment:谷歌验证密钥" json:"gauth_secret"`                                // 谷歌验证密钥
 	GauthStatus    int8      `gorm:"column:gauth_status;not null;default:2;comment:谷歌验证启用状态：1-启用；2-禁用" json:"gauth_status"`          // 谷歌验证启用状态：1-启用；2-禁用
-	Experience     int64     `gorm:"column:experience;not null;default:0;comment:用户当前经验值" json:"experience"`                         // 用户当前经验值
 	//
 	gormx.Model
 }

@@ -372,6 +372,62 @@ func GetAllTypeMapping() map[string]interface{} {
 	}
 }
 
+// IsValidNotificationType 判断主类型代码是否合法
+func IsValidNotificationType(typeInt int64) bool {
+	// 转换为NotificationTypeInt类型
+	mainType := NotificationTypeInt(typeInt)
+
+	// 检查是否在预定义的映射中
+	exists := IntTypeToString(mainType)
+	return exists != "" && mainType != NotificationTypeUnspecified
+}
+
+// IsValidNotificationSubType 判断子类型代码是否合法
+func IsValidNotificationSubType(subTypeInt int64) bool {
+	// 转换为NotificationSubTypeInt类型
+	subType := NotificationSubTypeInt(subTypeInt)
+
+	// 检查是否在预定义的映射中
+	exists := IntSubTypeToString(subType)
+	return exists != "" && subType != NotificationSubTypeUnspecified
+}
+
+// IsValidNotificationTypePair 判断主类型和子类型的组合是否合法
+func IsValidNotificationTypePair(mainTypeInt, subTypeInt int64) bool {
+	// 转换为对应的类型
+	mainType := NotificationTypeInt(mainTypeInt)
+	subType := NotificationSubTypeInt(subTypeInt)
+
+	// 先检查主类型和子类型各自是否合法
+	if !IsValidNotificationType(mainTypeInt) || !IsValidNotificationSubType(subTypeInt) {
+		return false
+	}
+
+	// 获取子类型对应的主类型
+	expectedMainType := GetMainTypeFromSubTypeInt(subType)
+
+	// 判断子类型是否属于指定的主类型
+	return expectedMainType == mainType
+}
+
+// GetNotificationTypeNamePair 获取主类型和子类型的名称对，如果不合法返回空字符串
+func GetNotificationTypeNamePair(mainTypeInt, subTypeInt int64) (mainTypeName, subTypeName string) {
+	// 判断组合是否合法
+	if !IsValidNotificationTypePair(mainTypeInt, subTypeInt) {
+		return "", ""
+	}
+
+	// 转换为对应的类型
+	mainType := NotificationTypeInt(mainTypeInt)
+	subType := NotificationSubTypeInt(subTypeInt)
+
+	// 获取类型名称
+	mainTypeStr := IntTypeToString(mainType)
+	subTypeStr := IntSubTypeToString(subType)
+
+	return mainTypeStr.ToStr(), subTypeStr.ToStr()
+}
+
 // 定义状态枚举
 type AnnouncementDisplayStatus int
 

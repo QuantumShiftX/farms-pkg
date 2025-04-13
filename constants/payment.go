@@ -119,36 +119,36 @@ func (s OrderStatus) String() string {
 	}
 }
 
-// DepositOrderStatus 定义充值订单状态的枚举类型
-type DepositOrderStatus int
+// WithdrawOrderStatus 定义提现订单状态的枚举类型
+type WithdrawOrderStatus int
 
-// 定义充值订单状态的枚举值
+// 定义提现订单状态的枚举值
 const (
-	DepositOrderStatusPending           DepositOrderStatus = iota + 1 // 1 - 待出款
-	DepositOrderStatusPendingUnlocked                                 // 2 - 待出款（未锁定）
-	DepositOrderStatusPendingLocked                                   // 3 - 待出款（已锁定）
-	DepositOrderStatusPendingThirdParty                               // 4 - 待三方付款
-	DepositOrderStatusPaymentFailed                                   // 5 - 付款失败
-	DepositOrderStatusRejected                                        // 6 - 已拒绝
-	DepositOrderStatusCancelled                                       // 7 - 已取消
-	DepositOrderStatusPaid                                            // 8 - 已付款
-	DepositOrderStatusForcePaid                                       // 9 - 已强制付款
+	WithdrawOrderStatusPending           WithdrawOrderStatus = iota + 1 // 1 - 待出款
+	WithdrawOrderStatusPendingUnlocked                                  // 2 - 待出款（未锁定）
+	WithdrawOrderStatusPendingLocked                                    // 3 - 待出款（已锁定）
+	WithdrawOrderStatusPendingThirdParty                                // 4 - 待三方付款
+	WithdrawOrderStatusPaymentFailed                                    // 5 - 付款失败
+	WithdrawOrderStatusRejected                                         // 6 - 已拒绝
+	WithdrawOrderStatusCancelled                                        // 7 - 已取消
+	WithdrawOrderStatusPaid                                             // 8 - 已付款
+	WithdrawOrderStatusForcePaid                                        // 9 - 已强制付款
 )
 
-func (s DepositOrderStatus) Int64() int64 {
+func (s WithdrawOrderStatus) Int64() int64 {
 	return int64(s)
 }
 
-// DepositOrderStatus 根据充值订单状态返回合并后的状态
-func (s DepositOrderStatus) DepositOrderStatus() OrderStatus {
+// WithdrawOrderStatus 根据提现订单状态返回合并后的状态
+func (s WithdrawOrderStatus) WithdrawOrderStatus() OrderStatus {
 	switch s {
-	case DepositOrderStatusPending, DepositOrderStatusPendingUnlocked, DepositOrderStatusPendingLocked, DepositOrderStatusPendingThirdParty:
+	case WithdrawOrderStatusPending, WithdrawOrderStatusPendingUnlocked, WithdrawOrderStatusPendingLocked, WithdrawOrderStatusPendingThirdParty:
 		// 处理中：待出款、待三方付款、待锁定等
 		return OrderStatusProcessing
-	case DepositOrderStatusPaid, DepositOrderStatusForcePaid:
+	case WithdrawOrderStatusPaid, WithdrawOrderStatusForcePaid:
 		// 处理成功：已付款、已强制付款
 		return OrderStatusSuccess
-	case DepositOrderStatusPaymentFailed, DepositOrderStatusRejected, DepositOrderStatusCancelled:
+	case WithdrawOrderStatusPaymentFailed, WithdrawOrderStatusRejected, WithdrawOrderStatusCancelled:
 		// 处理失败：付款失败、已拒绝、已取消
 		return OrderStatusFailed
 	default:
@@ -157,26 +157,26 @@ func (s DepositOrderStatus) DepositOrderStatus() OrderStatus {
 	}
 }
 
-// String 方法，返回充值订单状态的中文描述
-func (s DepositOrderStatus) String() string {
+// String 方法，返回提现订单状态的中文描述
+func (s WithdrawOrderStatus) String() string {
 	switch s {
-	case DepositOrderStatusPending:
+	case WithdrawOrderStatusPending:
 		return "待出款"
-	case DepositOrderStatusPendingUnlocked:
+	case WithdrawOrderStatusPendingUnlocked:
 		return "待出款（未锁定）"
-	case DepositOrderStatusPendingLocked:
+	case WithdrawOrderStatusPendingLocked:
 		return "待出款（已锁定）"
-	case DepositOrderStatusPendingThirdParty:
+	case WithdrawOrderStatusPendingThirdParty:
 		return "待三方付款"
-	case DepositOrderStatusPaymentFailed:
+	case WithdrawOrderStatusPaymentFailed:
 		return "付款失败"
-	case DepositOrderStatusRejected:
+	case WithdrawOrderStatusRejected:
 		return "已拒绝"
-	case DepositOrderStatusCancelled:
+	case WithdrawOrderStatusCancelled:
 		return "已取消"
-	case DepositOrderStatusPaid:
+	case WithdrawOrderStatusPaid:
 		return "已付款"
-	case DepositOrderStatusForcePaid:
+	case WithdrawOrderStatusForcePaid:
 		return "已强制付款"
 	default:
 		return "未知状态"

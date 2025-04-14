@@ -7,6 +7,7 @@ const (
 	AgentRebateRulesCategoryConf SettingsConfCategory = "rebate_rules"   // 代理规则
 	AgreementCategoryConf        SettingsConfCategory = "agreement"      // 协议
 	FundsPolicyCategoryConf      SettingsConfCategory = "funds_policy"   // 充值提款
+	OperationConfigCategory      SettingsConfCategory = "operation"
 )
 
 func (t SettingsConfCategory) Str() string {
@@ -23,6 +24,8 @@ const (
 	AgreementCustomerServiceKeyConf SettingsConfKey = "customer_service"
 	FundsDepositPolicyKeyConf       SettingsConfKey = "deposit_policy"
 	FundsWithdrawalPolicyKeyConf    SettingsConfKey = "withdrawal_policy"
+	OperationAppPackageConfig       SettingsConfKey = "app_package_config" // app包配置
+
 )
 
 func (t SettingsConfKey) Str() string {

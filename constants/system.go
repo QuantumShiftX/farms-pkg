@@ -31,3 +31,27 @@ const (
 func (t SettingsConfKey) Str() string {
 	return string(t)
 }
+
+// CurrencyType 定义货币类型的枚举类型
+type CurrencyType int64
+
+// 定义货币类型的枚举值
+const (
+	CurrencyTypeFiat     CurrencyType = iota + 1 // 1 - 法定货币
+	CurrencyTypeDigital                          // 2 - 数字货币
+	CurrencyTypePlatform                         // 3 - 平台币
+)
+
+// String 方法，返回货币类型的中文描述
+func (c CurrencyType) String() string {
+	switch c {
+	case CurrencyTypeFiat:
+		return "法定货币"
+	case CurrencyTypeDigital:
+		return "数字货币"
+	case CurrencyTypePlatform:
+		return "平台币"
+	default:
+		return "未知货币类型"
+	}
+}

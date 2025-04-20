@@ -43,6 +43,7 @@ type RechargeChannel struct {
 	CustomerLinkType        int8    `gorm:"column:customer_link_type;comment:客服链接类型" json:"customer_link_type"`                                   // 客服链接类型
 	CustomerLink            string  `gorm:"column:customer_link;size:255;comment:客服链接" json:"customer_link"`                                      // 客服链接
 	CustomerCurrencyCodes   string  `gorm:"column:customer_currency_codes;type:jsonb;default:'{}';comment:货币" json:"customer_currency_codes"`     // 货币
+	UsdtExchangeRate        int64   `gorm:"column:usdt_exchange_rate;comment:USDT兑换汇率（固定1000个指定货币兑换多少ustd的汇率）" json:"usdt_exchange_rate"`         // USDT兑换汇率（固定1000个指定货币兑换多少ustd的汇率）
 	//
 	gormx.OperationBaseModel
 	gormx.Model

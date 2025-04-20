@@ -1,5 +1,21 @@
 package constants
 
+type RechargeChannelType int8
+
+const (
+	_                           RechargeChannelType = iota // none
+	RechargeChannelTypeUSDT                                // USDT虚拟货币
+	RechargeChannelTypeBankCard                            // 银行卡
+	RechargeChannelTypeQuickPay                            // 快捷支付
+)
+
+func (t RechargeChannelType) Default() RechargeChannelType {
+	if t < RechargeChannelTypeUSDT || t > RechargeChannelTypeQuickPay {
+		return RechargeChannelTypeUSDT
+	}
+	return t
+}
+
 // RechargeOrderStatusType 充值订单状态
 type RechargeOrderStatusType int8
 

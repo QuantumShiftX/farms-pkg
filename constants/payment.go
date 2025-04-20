@@ -1,5 +1,10 @@
 package constants
 
+const (
+	// 货币USDT
+	CurrencyUSDT = "USDT"
+)
+
 type RechargeChannelType int8
 
 const (

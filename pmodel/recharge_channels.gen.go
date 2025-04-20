@@ -8,7 +8,7 @@ const TableNameRechargeChannel = "recharge_channels"
 type RechargeChannel struct {
 	ID                      int64  `gorm:"column:id;primaryKey;autoIncrement:true;comment:主键" json:"id"`                                         // 主键
 	RechargeChannelName     string `gorm:"column:recharge_channel_name;not null;comment:充值通道名称" json:"recharge_channel_name"`                    // 充值通道名称
-	RechargeChannelType     int8   `gorm:"column:recharge_channel_type;not null;comment:充值通道类型" json:"recharge_channel_type"`                    // 充值通道类型
+	RechargeChannelType     int8   `gorm:"column:recharge_channel_type;not null;comment:充值通道类型" json:"recharge_channel_type"`                    // 充值通道类型1.USDT虚拟货币 2.银行卡  3.快捷支付
 	RechargeChannelCategory int8   `gorm:"column:recharge_channel_category;default:1;comment:充值通道分类" json:"recharge_channel_category"`           // 充值通道分类
 	RechargeMerchantID      int64  `gorm:"column:recharge_merchant_id;not null;comment:充值商户配置id" json:"recharge_merchant_id"`                    // 充值商户配置id
 	RechargeCategoryID      int64  `gorm:"column:recharge_category_id;not null;comment:充值大类id" json:"recharge_category_id"`                      // 充值大类id
@@ -43,7 +43,6 @@ type RechargeChannel struct {
 	CustomerLinkType        int8   `gorm:"column:customer_link_type;comment:客服链接类型" json:"customer_link_type"`                                   // 客服链接类型
 	CustomerLink            string `gorm:"column:customer_link;size:255;comment:客服链接" json:"customer_link"`                                      // 客服链接
 	CustomerCurrencyCodes   string `gorm:"column:customer_currency_codes;type:jsonb;default:'{}';comment:货币" json:"customer_currency_codes"`     // 货币
-	UsdtExchangeRate        int64  `gorm:"column:usdt_exchange_rate;comment:USDT兑换汇率（固定1000个指定货币兑换多少ustd的汇率）" json:"usdt_exchange_rate"`         // USDT兑换汇率（固定1000个指定货币兑换多少ustd的汇率）
 	//
 	gormx.OperationBaseModel
 	gormx.Model

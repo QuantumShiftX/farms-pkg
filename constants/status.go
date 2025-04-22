@@ -26,6 +26,22 @@ func (t StatusEnabledType) Default() StatusEnabledType {
 	return t
 }
 
+// 定义在线离线状态的枚举类型
+type UserStatus int
+
+const (
+	UserStatusOnline  UserStatus = iota + 1 // 在线状态 1
+	UserStatusOffline                       // 离线状态 2
+)
+
+func (t UserStatus) Int64() int64 {
+	return int64(t)
+}
+
+func (t UserStatus) Int8() int8 {
+	return int8(t)
+}
+
 // 定义是否可操作的枚举
 type OperableEnum int
 

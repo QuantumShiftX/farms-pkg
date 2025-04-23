@@ -10,13 +10,13 @@ const TableNameUserStorage = "user_storages"
 
 // UserStorage mapped from table <user_storages>
 type UserStorage struct {
-	ID              int64 `gorm:"column:id;primaryKey;autoIncrement:true;comment:自增主键ID"`
-	StorageID       int64 `gorm:"column:storage_id;not null;comment:用户的仓库物品ID"`
-	UserID          int64 `gorm:"column:user_id;not null;comment:用户ID，关联到用户表"`
-	ProductType     int16 `gorm:"column:product_type;not null;comment:商品类型: 1-种子 2-肥料 3-其他道具等"`
-	ProductID       int64 `gorm:"column:product_id;not null;comment:商品ID，关联到对应商品配置表store的主键ID"`
-	ProductQuantity int32 `gorm:"column:product_quantity;not null;default:0;comment:商品数量，表示用户拥有的该商品数量"`
-	SkuID           int64 `gorm:"column:sku_id;not null;comment:商品SKU ID，关联到商品SKU配置表"`
+	ID              int64 `gorm:"column:id;primaryKey;autoIncrement:true;comment:自增主键ID" json:"id"`
+	StorageID       int64 `gorm:"column:storage_id;not null;comment:用户的仓库物品ID" json:"storage_id"`
+	UserID          int64 `gorm:"column:user_id;not null;comment:用户ID，关联到用户表" json:"user_id"`
+	ProductType     int16 `gorm:"column:product_type;not null;comment:商品类型: 1-种子 2-肥料 3-其他道具等" json:"product_type"`
+	ProductID       int64 `gorm:"column:product_id;not null;comment:商品ID，关联到对应商品配置表store的主键ID" json:"product_id"`
+	ProductQuantity int32 `gorm:"column:product_quantity;not null;default:0;comment:商品数量，表示用户拥有的该商品数量" json:"product_quantity"`
+	SkuID           int64 `gorm:"column:sku_id;not null;comment:商品SKU ID，关联到商品SKU配置表" json:"sku_id"`
 	//
 	gormx.Model
 }

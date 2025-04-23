@@ -18,7 +18,7 @@ type AgentCommission struct {
 	Rate         int64  `gorm:"column:rate;not null" json:"rate"`                     // 佣金比率（乘以1000000，例如：50%存为500000）
 	BalanceAfter int64  `gorm:"column:balance_after;not null" json:"balance_after"`   // 变动后余额（单位：微）
 	Remark       string `gorm:"column:remark" json:"remark"`                          // 备注信息
-	Agent        *Agent `gorm:"foreignKey:AgentID;references:AgentID"`                // 关联代理
+	Agent        *Agent `gorm:"foreignKey:AgentID;references:AgentID" json:"agent"`   // 关联代理
 
 }
 

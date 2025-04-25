@@ -50,4 +50,6 @@ const (
 	LockUserCropStatusCheckKey = "{lock:user_%d}:crop_status_check"
 	// LockUserTreeStatusCheckKey 用户发财树状态锁:用户id
 	LockUserTreeStatusCheckKey = "{lock:user_%d}:tree_status_check"
+	// LockCropReadyToHarvestKey 用户作物收获锁:用户id
+	LockCropReadyToHarvestKey = "{lock:user_%d}:crop_ready_harvest"
 )

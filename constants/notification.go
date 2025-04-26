@@ -1,5 +1,13 @@
 package constants
 
+import (
+	"fmt"
+	"github.com/zeromicro/go-zero/core/jsonx"
+	"regexp"
+	"strings"
+	"time"
+)
+
 // NotificationType 定义通知类型的枚举
 type NotificationType string
 
@@ -426,6 +434,70 @@ func GetNotificationTypeNamePair(mainTypeInt, subTypeInt int64) (mainTypeName, s
 	subTypeStr := IntSubTypeToString(subType)
 
 	return mainTypeStr.ToStr(), subTypeStr.ToStr()
+}
+
+// TemplateEngine 根据不同类型替换文本中的变量
+// 支持各种数据类型的变量替换，包括字符串、数字、布尔值、列表等
+func TemplateEngine(template string, variables map[string]interface{}) (string, error) {
+	// 如果模板为空或没有变量，直接返回
+	if template == "" || len(variables) == 0 {
+		return template, nil
+	}
+
+	// 使用正则表达式匹配 ${variable} 格式的变量
+	re := regexp.MustCompile(`\${([^}]+)}`)
+
+	// 替换所有匹配的变量
+	result := re.ReplaceAllStringFunc(template, func(match string) string {
+		// 提取变量名（去掉 ${ 和 }）
+		varName := match[2 : len(match)-1]
+
+		// 从变量映射中获取值
+		value, exists := variables[varName]
+		if !exists {
+			// 如果变量不存在，保留原始变量表达式
+			return match
+		}
+
+		// 根据变量类型进行适当的转换
+		switch v := value.(type) {
+		case string:
+			return v
+		case int, int32, int64, uint, uint32, uint64:
+			return fmt.Sprintf("%d", v)
+		case float32, float64:
+			return fmt.Sprintf("%.2f", v)
+		case bool:
+			return fmt.Sprintf("%t", v)
+		case []string:
+			return strings.Join(v, ", ")
+		case []interface{}:
+			// 处理复杂类型的数组
+			var items []string
+			for _, item := range v {
+				items = append(items, fmt.Sprintf("%v", item))
+			}
+			return strings.Join(items, ", ")
+		case map[string]interface{}:
+			// 处理嵌套对象，转换为JSON字符串
+			jsonStr, err := jsonx.Marshal(v)
+			if err != nil {
+				return match
+			}
+			return string(jsonStr)
+		case time.Time:
+			// 时间类型特殊处理
+			return v.Format(time.DateTime)
+		case nil:
+			// 空值处理
+			return ""
+		default:
+			// 其他类型尝试使用默认字符串表示
+			return fmt.Sprintf("%v", v)
+		}
+	})
+
+	return result, nil
 }
 
 // 定义状态枚举

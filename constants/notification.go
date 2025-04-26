@@ -3,8 +3,10 @@ package constants
 import (
 	"fmt"
 	"github.com/zeromicro/go-zero/core/jsonx"
+	"github.com/zeromicro/go-zero/core/logx"
 	"regexp"
 	"strings"
+	"sync"
 	"time"
 )
 
@@ -438,14 +440,23 @@ func GetNotificationTypeNamePair(mainTypeInt, subTypeInt int64) (mainTypeName, s
 
 // TemplateEngine 根据不同类型替换文本中的变量
 // 支持各种数据类型的变量替换，包括字符串、数字、布尔值、列表等
-func TemplateEngine(template string, variables map[string]interface{}) (string, error) {
+func TemplateEngine(template string, variables map[string]interface{}) string {
 	// 如果模板为空或没有变量，直接返回
 	if template == "" || len(variables) == 0 {
-		return template, nil
+		return template
 	}
 
-	// 使用正则表达式匹配 ${variable} 格式的变量
-	re := regexp.MustCompile(`\${([^}]+)}`)
+	// 快速检查是否包含变量标记，避免不必要的正则处理
+	if !strings.Contains(template, "${") {
+		return template
+	}
+
+	// 编译正则表达式（预编译提高性能）
+	var reOnce sync.Once
+	var re *regexp.Regexp
+	reOnce.Do(func() {
+		re = regexp.MustCompile(`\${([^}]+)}`)
+	})
 
 	// 替换所有匹配的变量
 	result := re.ReplaceAllStringFunc(template, func(match string) string {
@@ -460,44 +471,48 @@ func TemplateEngine(template string, variables map[string]interface{}) (string, 
 		}
 
 		// 根据变量类型进行适当的转换
+		var resultStr string
 		switch v := value.(type) {
 		case string:
-			return v
+			resultStr = v
 		case int, int32, int64, uint, uint32, uint64:
-			return fmt.Sprintf("%d", v)
+			resultStr = fmt.Sprintf("%d", v)
 		case float32, float64:
-			return fmt.Sprintf("%.2f", v)
+			resultStr = fmt.Sprintf("%.2f", v)
 		case bool:
-			return fmt.Sprintf("%t", v)
+			resultStr = fmt.Sprintf("%t", v)
 		case []string:
-			return strings.Join(v, ", ")
+			resultStr = strings.Join(v, ", ")
 		case []interface{}:
 			// 处理复杂类型的数组
 			var items []string
 			for _, item := range v {
 				items = append(items, fmt.Sprintf("%v", item))
 			}
-			return strings.Join(items, ", ")
+			resultStr = strings.Join(items, ", ")
 		case map[string]interface{}:
 			// 处理嵌套对象，转换为JSON字符串
 			jsonStr, err := jsonx.Marshal(v)
 			if err != nil {
+				logx.Errorf("转换JSON失败: %v", err)
 				return match
 			}
-			return string(jsonStr)
+			resultStr = string(jsonStr)
 		case time.Time:
 			// 时间类型特殊处理
-			return v.Format(time.DateTime)
+			resultStr = v.Format(time.DateTime)
 		case nil:
 			// 空值处理
-			return ""
+			resultStr = ""
 		default:
 			// 其他类型尝试使用默认字符串表示
-			return fmt.Sprintf("%v", v)
+			resultStr = fmt.Sprintf("%v", v)
 		}
+
+		return resultStr
 	})
 
-	return result, nil
+	return result
 }
 
 // 定义状态枚举

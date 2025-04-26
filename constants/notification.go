@@ -438,9 +438,37 @@ func GetNotificationTypeNamePair(mainTypeInt, subTypeInt int64) (mainTypeName, s
 	return mainTypeStr.ToStr(), subTypeStr.ToStr()
 }
 
+var (
+	// 模板引擎的变量映射
+	templateVariables = map[string]interface{}{
+		"level_name}": "John",
+		"age":         30,
+		"is_admin":    true,
+		"friends":     []string{"Alice", "Bob", "Charlie"},
+	}
+)
+
+// TemplateEngineVarType 定义变量替换类型
+type TemplateEngineVarType string
+
+func (t TemplateEngineVarType) ToStr() string {
+	return string(t)
+}
+
+const (
+	// LevelName vip等级名称
+	LevelName TemplateEngineVarType = "level_name"
+	// FarmName 农场名称
+	FarmName TemplateEngineVarType = "farm_name"
+	// Username 用户名称
+	Username TemplateEngineVarType = "username"
+	// Nickname 用户昵称
+	Nickname TemplateEngineVarType = "nickname"
+)
+
 // TemplateEngine 根据不同类型替换文本中的变量
 // 支持各种数据类型的变量替换，包括字符串、数字、布尔值、列表等
-func TemplateEngine(template string, variables map[string]interface{}) string {
+func TemplateEngine(template string, variables map[TemplateEngineVarType]interface{}) string {
 	// 如果模板为空或没有变量，直接返回
 	if template == "" || len(variables) == 0 {
 		return template
@@ -464,7 +492,7 @@ func TemplateEngine(template string, variables map[string]interface{}) string {
 		varName := match[2 : len(match)-1]
 
 		// 从变量映射中获取值
-		value, exists := variables[varName]
+		value, exists := variables[TemplateEngineVarType(varName)]
 		if !exists {
 			// 如果变量不存在，保留原始变量表达式
 			return match

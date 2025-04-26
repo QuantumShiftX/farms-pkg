@@ -1,15 +1,5 @@
 package constants
 
-import (
-	"fmt"
-	"github.com/zeromicro/go-zero/core/jsonx"
-	"github.com/zeromicro/go-zero/core/logx"
-	"regexp"
-	"strings"
-	"sync"
-	"time"
-)
-
 // NotificationType 定义通知类型的枚举
 type NotificationType string
 
@@ -436,111 +426,6 @@ func GetNotificationTypeNamePair(mainTypeInt, subTypeInt int64) (mainTypeName, s
 	subTypeStr := IntSubTypeToString(subType)
 
 	return mainTypeStr.ToStr(), subTypeStr.ToStr()
-}
-
-var (
-	// 模板引擎的变量映射
-	templateVariables = map[string]interface{}{
-		"level_name}": "John",
-		"age":         30,
-		"is_admin":    true,
-		"friends":     []string{"Alice", "Bob", "Charlie"},
-	}
-)
-
-// TemplateEngineVarType 定义变量替换类型
-type TemplateEngineVarType string
-
-func (t TemplateEngineVarType) ToStr() string {
-	return string(t)
-}
-
-const (
-	// LevelName vip等级名称
-	LevelName TemplateEngineVarType = "level_name"
-	// FarmName 农场名称
-	FarmName TemplateEngineVarType = "farm_name"
-	// Username 用户名称
-	Username TemplateEngineVarType = "username"
-	// Nickname 用户昵称
-	Nickname TemplateEngineVarType = "nickname"
-)
-
-// TemplateEngine 根据不同类型替换文本中的变量
-// 支持各种数据类型的变量替换，包括字符串、数字、布尔值、列表等
-func TemplateEngine(template string, variables map[TemplateEngineVarType]interface{}) string {
-	// 如果模板为空或没有变量，直接返回
-	if template == "" || len(variables) == 0 {
-		return template
-	}
-
-	// 快速检查是否包含变量标记，避免不必要的正则处理
-	if !strings.Contains(template, "${") {
-		return template
-	}
-
-	// 编译正则表达式（预编译提高性能）
-	var reOnce sync.Once
-	var re *regexp.Regexp
-	reOnce.Do(func() {
-		re = regexp.MustCompile(`\${([^}]+)}`)
-	})
-
-	// 替换所有匹配的变量
-	result := re.ReplaceAllStringFunc(template, func(match string) string {
-		// 提取变量名（去掉 ${ 和 }）
-		varName := match[2 : len(match)-1]
-
-		// 从变量映射中获取值
-		value, exists := variables[TemplateEngineVarType(varName)]
-		if !exists {
-			// 如果变量不存在，保留原始变量表达式
-			return match
-		}
-
-		// 根据变量类型进行适当的转换
-		var resultStr string
-		switch v := value.(type) {
-		case string:
-			resultStr = v
-		case int, int32, int64, uint, uint32, uint64:
-			resultStr = fmt.Sprintf("%d", v)
-		case float32, float64:
-			resultStr = fmt.Sprintf("%.2f", v)
-		case bool:
-			resultStr = fmt.Sprintf("%t", v)
-		case []string:
-			resultStr = strings.Join(v, ", ")
-		case []interface{}:
-			// 处理复杂类型的数组
-			var items []string
-			for _, item := range v {
-				items = append(items, fmt.Sprintf("%v", item))
-			}
-			resultStr = strings.Join(items, ", ")
-		case map[string]interface{}:
-			// 处理嵌套对象，转换为JSON字符串
-			jsonStr, err := jsonx.Marshal(v)
-			if err != nil {
-				logx.Errorf("转换JSON失败: %v", err)
-				return match
-			}
-			resultStr = string(jsonStr)
-		case time.Time:
-			// 时间类型特殊处理
-			resultStr = v.Format(time.DateTime)
-		case nil:
-			// 空值处理
-			resultStr = ""
-		default:
-			// 其他类型尝试使用默认字符串表示
-			resultStr = fmt.Sprintf("%v", v)
-		}
-
-		return resultStr
-	})
-
-	return result
 }
 
 // 定义状态枚举

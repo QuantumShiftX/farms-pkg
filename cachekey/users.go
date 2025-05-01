@@ -35,3 +35,7 @@ const (
 	UserLoginStreakKey   = "{user_login_%d}:streak"   // 用户连续登录计数，{userId}
 	UserLoginLastDateKey = "{user_login_%d}:last"     // 用户最后登录日期，{userId}
 )
+
+const (
+	UserLandOperationLogsKey = "{user_%d_%d}:op_land_position_%d:%s" // 用户操作土地位置记录键 {user_用户ID_操作人ID}:op_land_position_位置ID:年月日
+)

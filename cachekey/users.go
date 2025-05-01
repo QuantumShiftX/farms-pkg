@@ -37,5 +37,5 @@ const (
 )
 
 const (
-	UserLandOperationLogsKey = "{user_%d_%d}:op_land_position_%d:%d:%s" // 用户操作土地位置记录键 {user_用户ID_操作人ID}:op_land_position_位置ID:操作类型:年月日
+	UserLandOperationLogsKey = "{user_%d}:op_land_position_%d:%d:%s" // 用户操作土地位置记录键 {user_用户ID}:op_land_position_位置ID:操作类型:年月日
 )

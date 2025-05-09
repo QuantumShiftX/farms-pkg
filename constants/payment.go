@@ -5,6 +5,27 @@ const (
 	CurrencyUSDT = "USDT"
 )
 
+// FundFlowType 表示资金流动的类型
+type FundFlowType int8
+
+const (
+	_                FundFlowType = iota // 未定义
+	FundFlowDeposit                      // 充值
+	FundFlowWithdraw                     // 提现
+)
+
+var FundFlowTypeStrings = map[FundFlowType]string{
+	FundFlowDeposit:  "deposit",  // 充值
+	FundFlowWithdraw: "withdraw", // 提现
+}
+
+func (f FundFlowType) String() string {
+	if str, ok := FundFlowTypeStrings[f]; ok {
+		return str
+	}
+	return "unknown"
+}
+
 type RechargeChannelType int8
 
 const (

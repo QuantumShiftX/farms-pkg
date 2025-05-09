@@ -17,7 +17,7 @@ type PaymentConfig struct {
 	FixedFee           int64  `gorm:"column:fixed_fee;not null;default:0" json:"fixed_fee"`                 // 固定手续费金额，每笔交易收取的固定金额
 	PercentageFee      int64  `gorm:"column:percentage_fee;not null;default:0" json:"percentage_fee"`       // 百分比手续费率，以1000000为单位，例如 20%=0.20=0.20×1,000,000=200,000
 	Status             int64  `gorm:"column:status;not null;default:1" json:"status"`                       // 状态: 1:启用, 2:禁用
-
+	Sort               int64  `gorm:"column:sort;sort:desc;comment:排序" json:"sort"`                         // 排序
 	//
 	gormx.OperationBaseModel
 	gormx.Model

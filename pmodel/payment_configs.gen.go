@@ -15,7 +15,7 @@ type PaymentConfig struct {
 	HasExchangeRate    int64  `gorm:"column:has_exchange_rate;not null;default:2" json:"has_exchange_rate"` // 是否有汇率: 1:有, 2:无
 	ExchangeRate       int64  `gorm:"column:exchange_rate;not null;default:0" json:"exchange_rate"`         // 汇率值，1 USDT 兑换目标货币的汇率 1usdt兑换0.998美元 那么exchange_rate=0.998*1000000
 	FixedFee           int64  `gorm:"column:fixed_fee;not null;default:0" json:"fixed_fee"`                 // 固定手续费金额，每笔交易收取的固定金额
-	PercentageFee      int64  `gorm:"column:percentage_fee;not null;default:0" json:"percentage_fee"`       //
+	PercentageFee      int64  `gorm:"column:percentage_fee;not null;default:0" json:"percentage_fee"`       // 百分比手续费率，以1000000为单位，例如 20%=0.20=0.20×1,000,000=200,000
 	Status             int64  `gorm:"column:status;not null;default:1" json:"status"`                       // 状态: 1:启用, 2:禁用
 	Sort               int64  `gorm:"column:sort;sort:desc;comment:排序" json:"sort"`                         // 排序
 	//

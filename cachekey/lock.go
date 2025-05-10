@@ -45,6 +45,14 @@ const (
 )
 
 const (
+	LockUserWithDrawTimeExpire = 5 * time.Second
+	// LockUserWithdrawKey 用户提现锁:用户id 充值金额
+	LockUserWithdrawKey = "{lock:user_%d}:withdraw_%d"
+	// LockUserWithdrawNoticeKey 用户提现回调锁:订单ID 提现金额
+	LockUserWithdrawNoticeKey = "{lock:order_%s}:withdraw_%d"
+)
+
+const (
 	LockASyncStatusTimeExpire = 10 * time.Second
 	// LockUserCropStatusCheckKey 用户作物状态锁:用户id
 	LockUserCropStatusCheckKey = "{lock:user_%d}:crop_status_check"

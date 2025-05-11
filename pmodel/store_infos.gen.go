@@ -12,8 +12,8 @@ const TableNameStoreInfo = "store_infos"
 type StoreInfo struct {
 	ID              int64  `gorm:"column:id;primaryKey;autoIncrement:true;comment:自增主键" json:"id"`
 	ProductType     int16  `gorm:"column:product_type;not null;comment:商品类型: 1-种子 2-肥料" json:"product_type"`
-	ProductName     string `gorm:"column:product_name;type:varchar(255);not null;comment:商品名称" json:"product_name"`
-	ProductImageURL string `gorm:"column:product_image_url;type:varchar(255);not null;comment:商品图片地址" json:"product_image_url"`
+	ProductName     string `gorm:"column:product_name;type:varchar(500);not null;comment:商品名称" json:"product_name"`
+	ProductImageURL string `gorm:"column:product_image_url;type:varchar(500);not null;comment:商品图片地址" json:"product_image_url"`
 	SkuID           int64  `gorm:"column:sku_id;not null;comment:商品对应的货物ID" json:"sku_id"`
 	Stock           int64  `gorm:"column:stock;not null;default:-1;comment:库存数量，-1表示无限" json:"stock"`
 	Sort            int64  `gorm:"column:sort;not null;default:1;comment:排序字段" json:"sort"`

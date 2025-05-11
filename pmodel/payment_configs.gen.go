@@ -9,8 +9,8 @@ type PaymentConfig struct {
 	ID                 int64  `gorm:"column:id;primaryKey;autoIncrement" json:"id"`
 	PaymentConfigType  int64  `gorm:"column:payment_config_type;not null" json:"payment_config_type"`       // 配置类型: 1:充值(deposit), 2:提现(withdraw)
 	PaymentChannelType int64  `gorm:"column:payment_channel_type;not null" json:"payment_channel_type"`     // 支付渠道类型: 1:USDT虚拟货币, 2:银行卡, 3:快捷支付
-	Name               string `gorm:"column:name;type:varchar(255);not null" json:"name"`                   // 支付方式名称，如"USDT充值"、"银行卡提现"等
-	CurrencyCode       string `gorm:"column:currency_code;type:varchar(255);not null" json:"currency_code"` // 货币代码，如"USDT"、"CNY"等
+	Name               string `gorm:"column:name;type:varchar(500);not null" json:"name"`                   // 支付方式名称，如"USDT充值"、"银行卡提现"等
+	CurrencyCode       string `gorm:"column:currency_code;type:varchar(500);not null" json:"currency_code"` // 货币代码，如"USDT"、"CNY"等
 	LogoURL            string `gorm:"column:logo_url;type:varchar(500)" json:"logo_url"`                    // LOGO图片URL地址，用于前端显示
 	HasExchangeRate    int64  `gorm:"column:has_exchange_rate;not null;default:2" json:"has_exchange_rate"` // 是否有汇率: 1:有, 2:无
 	ExchangeRate       int64  `gorm:"column:exchange_rate;not null;default:0" json:"exchange_rate"`         // 汇率值，1 USDT 兑换目标货币的汇率 1usdt兑换0.998美元 那么exchange_rate=0.998*1000000

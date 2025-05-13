@@ -47,7 +47,7 @@ const (
 
 const (
 	// SystemOssSignedURLTimeExpire 图片签名过期时间
-	SystemOssSignedURLTimeExpire = 24 * 7 * time.Hour
+	SystemOssSignedURLTimeExpire = 24*7*time.Hour - 60*time.Minute
 	// SystemOssSignedURLKey 图片签名
 	SystemOssSignedURLKey = "{oss:signed:url:%s}"
 )

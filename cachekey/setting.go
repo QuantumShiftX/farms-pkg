@@ -38,3 +38,13 @@ const (
 	// NotifySubTypeCodeLanguageKey 通知缓存（{sub_type_code}:{language_code}）
 	NotifySubTypeCodeLanguageKey = "{cache}:notify_sub:%s:info:%s"
 )
+
+/**
+ * {cache}标识，redis集群时slot要根据{xxx}落槽
+ */
+
+const (
+	SystemOssSignedURLTimeExpire = 71 * 60 * 60
+	// SystemOssSignedURLKey 图片签名
+	SystemOssSignedURLKey = "{oss:signed:url:%s}"
+)

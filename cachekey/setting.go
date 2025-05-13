@@ -1,5 +1,7 @@
 package cachekey
 
+import "time"
+
 /**
  * {cache}标识，redis集群时slot要根据{xxx}落槽
  */
@@ -44,7 +46,8 @@ const (
  */
 
 const (
-	SystemOssSignedURLTimeExpire = 71 * 60 * 60
+	// SystemOssSignedURLTimeExpire 图片签名过期时间
+	SystemOssSignedURLTimeExpire = 24 * 7 * time.Hour
 	// SystemOssSignedURLKey 图片签名
 	SystemOssSignedURLKey = "{oss:signed:url:%s}"
 )

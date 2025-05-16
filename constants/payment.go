@@ -19,6 +19,10 @@ var FundFlowTypeStrings = map[FundFlowType]string{
 	FundFlowWithdraw: "withdraw", // 提现
 }
 
+func (f FundFlowType) Int64() int64 {
+	return int64(f)
+}
+
 func (f FundFlowType) String() string {
 	if str, ok := FundFlowTypeStrings[f]; ok {
 		return str
@@ -167,8 +171,8 @@ type WithdrawOrderStatus int
 // 定义提现订单状态的枚举值
 const (
 	WithdrawOrderStatusPending           WithdrawOrderStatus = iota + 1 // 1 - 待出款
-	WithdrawOrderStatusPendingUnlocked                                  // 2 - 待出款（未锁定）
-	WithdrawOrderStatusPendingLocked                                    // 3 - 待出款（已锁定）
+	WithdrawOrderStatusPendingUnlocked                                  // 2 - 待出款（未锁定）---
+	WithdrawOrderStatusPendingLocked                                    // 3 - 待出款（已锁定）---
 	WithdrawOrderStatusPendingThirdParty                                // 4 - 待三方付款
 	WithdrawOrderStatusPaymentFailed                                    // 5 - 付款失败
 	WithdrawOrderStatusRejected                                         // 6 - 已拒绝

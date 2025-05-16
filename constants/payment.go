@@ -39,6 +39,10 @@ const (
 	RechargeChannelTypeQuickPay                            // 快捷支付
 )
 
+func (t RechargeChannelType) Int64() int64 {
+	return int64(t)
+}
+
 func (t RechargeChannelType) Default() RechargeChannelType {
 	if t < RechargeChannelTypeUSDT || t > RechargeChannelTypeQuickPay {
 		return RechargeChannelTypeUSDT

@@ -174,15 +174,14 @@ type WithdrawOrderStatus int
 
 // 定义提现订单状态的枚举值
 const (
-	WithdrawOrderStatusPending           WithdrawOrderStatus = iota + 1 // 1 - 待出款
-	WithdrawOrderStatusPendingUnlocked                                  // 2 - 待出款（未锁定）---
-	WithdrawOrderStatusPendingLocked                                    // 3 - 待出款（已锁定）---
-	WithdrawOrderStatusPendingThirdParty                                // 4 - 待三方付款
-	WithdrawOrderStatusPaymentFailed                                    // 5 - 付款失败
-	WithdrawOrderStatusRejected                                         // 6 - 已拒绝
-	WithdrawOrderStatusCancelled                                        // 7 - 已取消
-	WithdrawOrderStatusPaid                                             // 8 - 已付款
-	WithdrawOrderStatusForcePaid                                        // 9 - 已强制付款
+	WithdrawOrderStatusPending            WithdrawOrderStatus = iota + 1 // 1 - 待出款
+	WithdrawOrderStatusTypeWaitRiskReview                                // 2 - 待风控审核
+	WithdrawOrderStatusPendingThirdParty                                 // 3 - 待三方付款
+	WithdrawOrderStatusPaymentFailed                                     // 4 - 付款失败
+	WithdrawOrderStatusRejected                                          // 5 - 已拒绝
+	WithdrawOrderStatusCancelled                                         // 6 - 已取消
+	WithdrawOrderStatusPaid                                              // 7 - 已付款
+	WithdrawOrderStatusForcePaid                                         // 8 - 已强制付款
 )
 
 func (s WithdrawOrderStatus) Int64() int64 {
@@ -192,8 +191,8 @@ func (s WithdrawOrderStatus) Int64() int64 {
 // WithdrawOrderStatus 根据提现订单状态返回合并后的状态
 func (s WithdrawOrderStatus) WithdrawOrderStatus() OrderStatus {
 	switch s {
-	case WithdrawOrderStatusPending, WithdrawOrderStatusPendingUnlocked, WithdrawOrderStatusPendingLocked, WithdrawOrderStatusPendingThirdParty:
-		// 处理中：待出款、待三方付款、待锁定等
+	case WithdrawOrderStatusPending, WithdrawOrderStatusTypeWaitRiskReview, WithdrawOrderStatusPendingThirdParty:
+		// 处理中：待出款、待风控审核、待三方付款等
 		return OrderStatusProcessing
 	case WithdrawOrderStatusPaid, WithdrawOrderStatusForcePaid:
 		// 处理成功：已付款、已强制付款
@@ -212,10 +211,8 @@ func (s WithdrawOrderStatus) String() string {
 	switch s {
 	case WithdrawOrderStatusPending:
 		return "待出款"
-	case WithdrawOrderStatusPendingUnlocked:
-		return "待出款（未锁定）"
-	case WithdrawOrderStatusPendingLocked:
-		return "待出款（已锁定）"
+	case WithdrawOrderStatusTypeWaitRiskReview:
+		return "待风控审核"
 	case WithdrawOrderStatusPendingThirdParty:
 		return "待三方付款"
 	case WithdrawOrderStatusPaymentFailed:

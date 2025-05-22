@@ -169,6 +169,64 @@ func (s OrderStatus) String() string {
 	}
 }
 
+// GetRechargeOrderStatusesByOrderStatus 根据订单状态返回对应的充值订单状态数组
+func (s OrderStatus) GetRechargeOrderStatusesByOrderStatus() []RechargeOrderStatusType {
+	switch s {
+	case OrderStatusProcessing:
+		// 处理中状态包含的充值订单状态
+		return []RechargeOrderStatusType{
+			RechargeOrderStatusTypePayWaiting,     // 待支付
+			RechargeOrderStatusTypeExamineRepair,  // 补单审核中
+			RechargeOrderStatusTypeExamineAgain,   // 二次审核中
+			RechargeOrderStatusTypeExamineWaiting, // 待审核
+		}
+	case OrderStatusSuccess:
+		// 成功状态包含的充值订单状态
+		return []RechargeOrderStatusType{
+			RechargeOrderStatusTypePaySuccess, // 支付成功
+		}
+	case OrderStatusFailed:
+		// 失败状态包含的充值订单状态
+		return []RechargeOrderStatusType{
+			RechargeOrderStatusTypePayTimeout, // 支付超时
+			RechargeOrderStatusTypePayFailed,  // 支付失败
+			RechargeOrderStatusTypeCancel,     // 已取消
+		}
+	default:
+		// 未知状态返回空数组
+		return []RechargeOrderStatusType{}
+	}
+}
+
+// GetWithdrawOrderStatusesByOrderStatus 根据订单状态返回对应的提现订单状态数组
+func (s OrderStatus) GetWithdrawOrderStatusesByOrderStatus() []WithdrawOrderStatus {
+	switch s {
+	case OrderStatusProcessing:
+		// 处理中状态包含的提现订单状态
+		return []WithdrawOrderStatus{
+			WithdrawOrderStatusPending,            // 待出款
+			WithdrawOrderStatusTypeWaitRiskReview, // 待风控审核
+			WithdrawOrderStatusPendingThirdParty,  // 待三方付款
+		}
+	case OrderStatusSuccess:
+		// 成功状态包含的提现订单状态
+		return []WithdrawOrderStatus{
+			WithdrawOrderStatusPaid,      // 已付款
+			WithdrawOrderStatusForcePaid, // 已强制付款
+		}
+	case OrderStatusFailed:
+		// 失败状态包含的提现订单状态
+		return []WithdrawOrderStatus{
+			WithdrawOrderStatusPaymentFailed, // 付款失败
+			WithdrawOrderStatusRejected,      // 已拒绝
+			WithdrawOrderStatusCancelled,     // 已取消
+		}
+	default:
+		// 未知状态返回空数组
+		return []WithdrawOrderStatus{}
+	}
+}
+
 // WithdrawOrderStatus 定义提现订单状态的枚举类型
 type WithdrawOrderStatus int
 

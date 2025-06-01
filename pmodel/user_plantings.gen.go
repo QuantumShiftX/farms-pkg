@@ -25,7 +25,7 @@ type UserPlanting struct {
 	CropName                          string `gorm:"column:crop_name;type:LowCardinality(String);comment:'种植时作物的作物名称快照'" json:"crop_name"`
 	ProductName                       string `gorm:"column:product_name;type:LowCardinality(String);comment:'种植时商品名称快照'" json:"product_name"`
 	Price                             int64  `gorm:"column:price;comment:'种植时作物的价格快照'" json:"price"`
-	GrowthTime                        int64  `gorm:"column:growth_time;comment:'种植时作物的生长时间快照'" json:"growth_time"`
+	GrowthTime                        int64  `gorm:"column:growth_time;comment:'种植时作物的生长时间快照（分钟）'" json:"growth_time"`
 	CoinReward                        int64  `gorm:"column:coin_reward;comment:'种植时作物的金币奖励快照'" json:"coin_reward"`
 	WateringFrequency                 int64  `gorm:"column:watering_frequency;comment:'种植时作物的浇水频率快照'" json:"watering_frequency"`
 	FertilizingFrequency              int64  `gorm:"column:fertilizing_frequency;comment:'种植时作物的施肥频率快照'" json:"fertilizing_frequency"`

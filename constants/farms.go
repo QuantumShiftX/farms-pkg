@@ -98,3 +98,15 @@ const (
 func (t HarvestType) Int64() int64 {
 	return int64(t)
 }
+
+// CheckMode 检查模式
+type CheckMode int
+
+const (
+	CheckModeSelf   CheckMode = 1 // 检查自己能否给自己操作
+	CheckModeFriend CheckMode = 2 // 检查自己能否被好友操作
+)
+
+func (c CheckMode) Int64() int64 {
+	return int64(c)
+}

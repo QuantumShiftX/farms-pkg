@@ -27,3 +27,8 @@ const (
 	TimeSearchTypeLastMonth                       // 上月
 	TimeSearchTypeCustom                          // 自定义
 )
+
+const (
+	DefaultLanguageCode = "en"  // 默认语言
+	DefaultCurrencyCode = "USD" // 默认货币
+)

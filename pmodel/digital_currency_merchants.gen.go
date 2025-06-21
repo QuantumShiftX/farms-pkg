@@ -21,6 +21,7 @@ type DigitalCurrencyMerchant struct {
 	Sort                int64  `gorm:"column:sort;type:int8;not null;default:0" json:"sort"`                                   // 排序
 	IsUnlimitedBalance  int8   `gorm:"column:is_unlimited_balance;type:int2;not null;default:2" json:"is_unlimited_balance"`   // 是否无限库存余额 1 是，2：否
 	IsOnline            int8   `gorm:"column:is_online;type:int2;not null;default:1" json:"is_online"`                         // 是否上架 1开启上架，2：下架
+	RealExchangeRate    int64  `gorm:"-" json:"real_exchange_rate"`                                                            // 当前的实时汇率(代币兑换USDT)类似1个代币兑换多少ustd的汇率
 	//
 	gormx.OperationBaseModel
 	gormx.Model

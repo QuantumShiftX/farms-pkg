@@ -62,8 +62,8 @@ const (
 const (
 	// SystemsRateTimeExpire 过期时间
 	SystemsRateTimeExpire = 1 * time.Minute
-	// SystemsRateBaseKey 基准汇率 官方/参考汇率 (Hash结构)
+	// SystemsRateBaseKey 基准汇率 官方/参考汇率
 	SystemsRateBaseKey = "{rate:base:coins_usdt}"
-	// SystemsRateMerchantKey 各币商汇率 (Hash结构)
+	// SystemsRateMerchantKey 各币商汇率
 	SystemsRateMerchantKey = "{rate:merchant:%d:coins_usdt}"
 )

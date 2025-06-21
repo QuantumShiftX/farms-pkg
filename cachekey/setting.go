@@ -54,3 +54,16 @@ const (
 	// SystemOssSignedURLKey 图片签名
 	SystemOssSignedURLKey = "{oss:signed:url:%s}"
 )
+
+/**
+ * {cache}标识，redis集群时slot要根据{xxx}落槽
+ */
+
+const (
+	// SystemsRateTimeExpire 过期时间
+	SystemsRateTimeExpire = 1 * time.Minute
+	// SystemsRateBaseKey 基准汇率 官方/参考汇率 (Hash结构)
+	SystemsRateBaseKey = "{rate:base:coins_usdt}"
+	// SystemsRateMerchantKey 各币商汇率 (Hash结构)
+	SystemsRateMerchantKey = "{rate:merchant:%d:coins_usdt}"
+)

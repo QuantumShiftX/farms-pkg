@@ -13,10 +13,13 @@ const (
 	// CacheCropsKey 农作物信息
 	CacheCropsKey = "{cache}:crops:%d" // {cache}:crops:{id}
 
+	// CacheSettingBaseKey 系统设置信息[通用key system_setting]
 	CacheSettingBaseKey = "{cache}:system_setting:%s:%s" // {cache}:system_setting:{category}{key}
 
+	// CacheSettingRebateKey 推广返佣信息
 	CacheSettingRebateKey = "{cache}:system_rebate:%s:%s" // {cache}:system_setting:{category}{key}
 
+	// CacheSettingAgreementKey 协议信息
 	CacheSettingAgreementKey = "{cache}:system_agreement:%s" // {cache}:system_setting:{category}
 
 )

@@ -26,7 +26,7 @@ const (
 	FundsDepositPolicyKeyConf       SettingsConfKey = "deposit_policy"
 	FundsWithdrawalPolicyKeyConf    SettingsConfKey = "withdrawal_policy"
 	OperationAppPackageConfig       SettingsConfKey = "app_package_config" // app包配置
-	ExchangeRateCategoryKeyConf     SettingsConfKey = "exchange_rate"      // app包配置
+	ExchangeRateCategoryKeyConf     SettingsConfKey = "exchange_rate"      // 汇率设置
 
 )
 
